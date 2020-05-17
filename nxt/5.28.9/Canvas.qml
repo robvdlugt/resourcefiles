@@ -588,7 +588,12 @@ Window {
 		anchors.fill: parent
 	}
 
- Rectangle {
+function getBalloonMode(balloonmode) {
+		if balloonmode == "Start"){isBalloonMode = true}
+		if balloonmode == "Stop"){isBalloonMode = false}
+	}
+
+Rectangle {
         	id: balloonScreen
         	color: "transparent"
         	//opacity: 0.5
@@ -596,7 +601,7 @@ Window {
 		Timer {
 			interval: 1000
 			repeat: true
-			running: !isBalloonMode
+			running: isBalloonMode
 			onTriggered: {
 				var component = Qt.createComponent("qrc:/qb/components/Balloon.qml");
 				var balloon = component.createObject(balloonScreen);
