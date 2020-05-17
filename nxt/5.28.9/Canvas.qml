@@ -588,7 +588,7 @@ Window {
 		anchors.fill: parent
 	}
 
-function getBalloonMode(balloonmode) {
+function BalloonMode(balloonmode) {
 		if balloonmode == "Start"){isBalloonMode = true}
 		if balloonmode == "Stop"){isBalloonMode = false}
 	}
@@ -601,7 +601,7 @@ Rectangle {
 		Timer {
 			interval: 1000
 			repeat: true
-			running: isBalloonMode
+			running: false
 			onTriggered: {
 				var component = Qt.createComponent("qrc:/qb/components/Balloon.qml");
 				var balloon = component.createObject(balloonScreen);
