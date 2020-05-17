@@ -62,7 +62,7 @@ Window {
 	property bool firstLoadingDone: false
 	property bool isNormalMode: true
 	property bool isWizardMode: !isNormalMode
-//BALLOOOOOOOON property bool isBalloonMode: false
+        property bool isBalloonMode: false
 
 	property int appsToLoad
 	onAppsToLoadChanged: p.setPsplashProgress()
