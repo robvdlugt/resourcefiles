@@ -589,8 +589,8 @@ Window {
 	}
 
 function BalloonMode(balloonmode) {
-		if balloonmode == "Start"){isBalloonMode = true}
-		if balloonmode == "Stop"){isBalloonMode = false}
+		if (balloonmode == "Start"){isBalloonMode = true}
+		if (balloonmode == "Stop"){isBalloonMode = false}
 	}
 
 Rectangle {
