@@ -587,13 +587,17 @@ Window {
 		anchors.fill: parent
 	}
 
+ Rectangle {
+        id: balloonScreen
+        color: "red"
+        opacity: 0.5
+        anchors.fill: parent
+	Text{
+			font.pixelSize:  30
+         		text: "POWER ON"
+     		}
 
-	Rectangle {
-		id: splashScreenBackground2
-		color: "red"
-		opacity: 0.5
-		anchors.fill: parent
-	}
+    	}
 
 	Loader {
 		id: backendlessStartupLoader
