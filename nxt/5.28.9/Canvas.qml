@@ -588,15 +588,14 @@ Window {
 		anchors.fill: parent
 	}
 
-function balloonMode(balloonmode) {
-	if (balloonmode == "Start"){isBalloonMode = true}
-	if (balloonmode == "Stop"){isBalloonMode = false}
-}
+	function balloonMode(balloonmode) {
+		if (balloonmode == "Start"){isBalloonMode = true}
+		if (balloonmode == "Stop"){isBalloonMode = false}
+	}
 
-Rectangle {
+	Rectangle {
         	id: balloonScreen
         	color: "transparent"
-        	//opacity: 0.5
         	anchors.fill: parent
 		Timer {
 			interval: 1000
@@ -610,8 +609,7 @@ Rectangle {
 				balloon.y = parent.height;
 			}
 		}
-//BALLOOOOOOOON 		visible: isBalloonMode
-
+		visible: isBalloonMode
     	}
 
 	Loader {
