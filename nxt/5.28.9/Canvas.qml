@@ -588,14 +588,22 @@ Window {
 	}
 
  Rectangle {
-        id: balloonScreen
-        color: "red"
-        opacity: 0.5
-        anchors.fill: parent
-	Text{
-			font.pixelSize:  30
-         		text: "BALLOOOOOOOOOOOOOOOOOOOOOON"
-     		}
+        	id: balloonScreen
+        	color: "red"
+        	opacity: 0.5
+        	anchors.fill: parent
+		Timer {
+			interval: 1000
+			repeat: true
+			running: showBalloons
+			onTriggered: {
+				var component = Qt.createComponent("qrc:/qb/components/Balloon.qml");
+				var balloon = component.createObject(game);
+				balloon.x = ((Math.random() * parent.width)-60);
+				balloon.y = parent.height;
+			}
+		}
+
 
     	}
 
