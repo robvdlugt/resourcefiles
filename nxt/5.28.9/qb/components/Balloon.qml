@@ -20,12 +20,12 @@ Item {
 
 
         transform: Rotation {
-            id: rotator
-            origin{
-                x: 60
-                y: 110
-             }
-             angle: 0
+           id: rotator
+           origin{
+               x: 60
+               y: 110
+            }
+            angle: 0
         }
 
         SequentialAnimation {
