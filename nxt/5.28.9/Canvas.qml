@@ -588,10 +588,10 @@ Window {
 		anchors.fill: parent
 	}
 
-//BALLOOOOOOOON function BalloonMode(balloonmode) {
-//BALLOOOOOOOON 		if (balloonmode == "Start"){isBalloonMode = true}
-//BALLOOOOOOOON 		if (balloonmode == "Stop"){isBalloonMode = false}
-//BALLOOOOOOOON 	}
+function BalloonMode(balloonmode) {
+	if (balloonmode == "Start"){isBalloonMode = true}
+	if (balloonmode == "Stop"){isBalloonMode = false}
+}
 
 Rectangle {
         	id: balloonScreen
