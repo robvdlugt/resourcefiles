@@ -62,6 +62,7 @@ Window {
 	property bool firstLoadingDone: false
 	property bool isNormalMode: true
 	property bool isWizardMode: !isNormalMode
+	property bool isBalloonMode: false
 
 	property int appsToLoad
 	onAppsToLoadChanged: p.setPsplashProgress()
@@ -595,7 +596,7 @@ Window {
 		Timer {
 			interval: 1000
 			repeat: true
-			running: true
+			running: !isBalloonMode
 			onTriggered: {
 				var component = Qt.createComponent("qrc:/qb/components/Balloon.qml");
 				var balloon = component.createObject(balloonScreen);
