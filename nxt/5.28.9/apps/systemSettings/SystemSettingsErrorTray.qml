@@ -5,7 +5,7 @@ import qb.base 1.0
 
 SystrayIcon {
 	id: systemSettingsErrorTrayIcon
-	visible: app.systrayErrorCount > 0
+	visible: (app.systrayErrorCount > 0) && ! globals.tsc["hideErrorSystray"]
 	posIndex: 300
 	objectName: "errorSystrayIcon"
 	image: "drawables/error_systray.svg"

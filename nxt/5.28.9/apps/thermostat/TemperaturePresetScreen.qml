@@ -84,4 +84,20 @@ Screen {
 		horizontalAlignment: Text.AlignHCenter
 		text: qsTr("You can set four temperature settings.<br>If you change the temperature, it also changes in the weekly program.")
 	}
+
+      Text {
+              id: summerModeText
+              anchors {
+                      baseline: parent.top 
+                      baselineOffset: 50
+                      horizontalCenter: parent.horizontalCenter
+              }
+              font {
+                      family:qfont.regular.name
+                      pixelSize: qfont.bodyText
+              }
+	visible: typeof globals.tsc["summerMode"] !== "undefined" ? globals.tsc["summerMode"] : false
+              color: "#ff0000"
+              text: "TSC zomer modus staat aan. Aanpassingen van de setpoints heeft als gevolg dat zomer modus uit wordt gezet."
+      }
 }

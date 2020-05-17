@@ -6,10 +6,40 @@ import ScreenStateController 1.0
 import qb.components 1.0
 import qb.base 1.0;
 
+//waste display start
+
+import FileIO 1.0
+
+//waste display end
+
 /// Application to manage thermostat settings.
 
 App {
 	id: thermostatApp
+//waste display start
+	property string wasteIcon
+	property bool wasteIconShow
+	property string wasteIcon2
+	property bool wasteIcon2Show
+	property int wasteIconHour : 18
+	property bool wasteIconBackShow
+	property bool wasteIcon2BackShow
+	property string wasteControlIcon
+	property bool enableThermostatMod : true
+	property variant wasteSettingsJson : {
+		'Afvalverwerker': "",
+		'Postcode': "",
+		'Huisnummer': "",
+		'Straatnummer': "",
+		'ICSnummer': "",
+		'DisplayIconVanafUur': "",
+		'ExtraDatumsFile': "",
+		'ExtraDatumsIconsFolder': "",
+		'CustomIcons' : "",
+		'ThermostaatIcon' : "",
+	}
+//waste display end
+
 
 	property url editBlockScreenUrl : "EditBlockScreen.qml"
 	property url vacationSetScreenUrl : "VacationSetScreen.qml"
@@ -223,6 +253,16 @@ App {
 			}
 		}
 	}
+	
+//waste mod start
+	Component.onCompleted: {
+
+		//read defaults
+ 		readWasteIconHour();
+		datetimeTimerWasteMidNight.interval = getMSecTill12oclock();
+		datetimeTimerWasteMidNight.start();
+	}
+// waste mod end
 
 	function init() {
 		registry.registerWidget("screen", temperaturePresetScreenUrl, thermostatApp);
@@ -679,6 +719,106 @@ App {
 			p.thermostatUuid = deviceUuid;
 		}
 	}
+
+//TSC waste display start
+
+	FileIO {
+		id: userSettingsFile
+		source: "file:///mnt/data/tsc/wastecollection.userSettings.json"
+	}
+	FileIO {
+		id: wasteIconFile
+		source: "file:///var/volatile/tmp/wasteDateIcon.txt"
+	}
+	FileIO {
+		id: wasteIcon2File
+		source: "file:///var/volatile/tmp/wasteDateIcon2.txt"
+	}
+
+	/// calculates miliseconds till next wasteIconHour from now plus one minute
+	function getMSecTill6oclock() {
+		var now = new Date();
+		var nowUtc = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds(),now.getMilliseconds());
+		var addaday = 0;
+		if (now.getHours() >= wasteIconHour) {
+			addaday = 1;
+		}
+		var sixOclock = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate() + addaday, wasteIconHour, 1, 0, 0);
+		return sixOclock - nowUtc;
+	}
+
+	/// calculates miliseconds till 00:01 to remove 24h display labels
+	function getMSecTill12oclock() {
+		var now = new Date();
+		var nowUtc = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds(),now.getMilliseconds());
+		var twelveOclock = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 1, 0, 0);
+		return twelveOclock - nowUtc;
+	}
+
+	function readWasteIconText() {
+		if (enableThermostatMod) {
+			wasteIcon = wasteIconFile.read().trim();
+			if (wasteIcon.length > 5) {
+				wasteIconShow = true;
+				wasteIcon2 = wasteIcon2File.read().trim();
+				if (wasteIcon2.length > 5) {
+					wasteIcon2Show = true;
+					wasteIconShow = false;
+				}
+			}
+		} 
+	}
+
+	function readWasteIconHour() {
+
+		// read userSettings
+		wasteSettingsJson = JSON.parse(userSettingsFile.read());		
+ 		wasteIconHour = parseInt(wasteSettingsJson ['DisplayIconVanafUur']) | wasteIconHour;
+		try {
+			enableThermostatMod = (wasteSettingsJson ['ThermostaatIcon'] == "Yes");
+		} catch (e) {
+		}
+
+	}
+
+
+	function updateWasteIcon(reset) {
+		wasteIcon = "";
+		wasteIconShow = false;
+		wasteIcon2 = "";
+		wasteIcon2Show = false;
+		if (reset == "yes") {
+			wasteIcon2BackShow = false;
+			wasteIconBackShow = false;
+		}
+		readWasteIconText();
+		wasteControlIcon = "file:///qmf/qml/apps/wastecollection/drawables/iconBack.png";
+	}
+
+	Timer {
+		id: datetimeTimerWaste
+		repeat: true
+		running: true
+		interval: 300000
+		onTriggered: {
+			readWasteIconHour();
+			updateWasteIcon("yes");
+			interval = getMSecTill6oclock();
+		}
+	}
+
+	Timer {
+		id: datetimeTimerWasteMidNight
+		repeat: true
+		running: false
+		onTriggered: {
+			readWasteIconHour();
+			updateWasteIcon("no");
+			interval = getMSecTill12oclock(); 
+		}
+	}
+
+//TSC waste display end
 
 	BxtDiscoveryHandler {
 		id: hcbConfigDiscoHandler

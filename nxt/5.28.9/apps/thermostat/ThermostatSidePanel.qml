@@ -73,7 +73,10 @@ Widget {
 		}
 
 		function onThermostatDatasetsChanged() {
-			currentTemperature = app.thermInfo['currentDisplayTemp'] / 100.0;
+//TSC mod start
+//			currentTemperature = app.thermInfo['currentDisplayTemp'] / 100.0;
+			currentTemperature = app.thermInfo['currentTemp'] / 100.0;
+//TSC mod end
 			currentSetpoint = app.thermInfo['currentSetpoint'] / 100.0;
 			activeTemperaturePreset(app.thermInfo['activeState']);
 
@@ -783,7 +786,11 @@ Widget {
 			id: currentTempDisplayDim
 			anchors {
 				verticalCenter: parent.top
-				verticalCenterOffset: Math.round(114 * verticalScaling)
+// waste mod start
+//				verticalCenterOffset: Math.round(114 * verticalScaling)
+				verticalCenterOffset: (app.wasteIconShow || app.wasteIcon2Show) ? Math.round(134 * verticalScaling) : Math.round(114 * verticalScaling)
+
+// waste mod end
 				left: parent.left
 				leftMargin: Math.round(8 * horizontalScaling)
 			}
@@ -860,5 +867,93 @@ Widget {
 			maximumLineCount: 3
 			text: rectStateInfo.state === "error" ? errorMsg.text : thermostatStateInfoText.text
 		}
+
+//TSC waste display start
+
+		Image {
+			id: twasteIconzzBig
+			source: app.wasteIcon
+			height: isNxt ? 125 : 100
+			width: isNxt ? 128 : 100
+			anchors {
+				left: currentTempDisplayDim.left
+				leftMargin: 100
+				top: parent.top
+			}
+			cache: false
+			visible: dimState ? app.wasteIconShow : false		// only show if one icon
+		}			
+
+		Image {
+			id: twasteIconzzBigBack
+			source: "file:///qmf/qml/apps/wastecollection/drawables/collectContainerDim.png"
+			height: isNxt ? 125 : 100
+			width: isNxt ? 128 : 100
+			anchors {
+				left: currentTempDisplayDim.left
+				leftMargin: 100
+				top: parent.top
+			}
+			cache: false
+			visible: dimState ? app.wasteIconBackShow : false	// only show if one icon and container needs to be collected
+		}
+
+		Image {
+			id: twasteIconzzSmall1
+			source: app.wasteIcon
+			height: isNxt ? 110 : 88
+			width: isNxt ? 113 : 88
+			anchors {
+				left: currentTempDisplayDim.left
+				leftMargin: 55
+				top: parent.top
+			}
+			cache: false
+		 	visible: dimState ? app.wasteIcon2Show : false		// only show if two icons
+		}
+
+		Image {
+			id: twasteIconzzSmall2
+			source: app.wasteIcon2
+			height: isNxt ? 110 : 88
+			width: isNxt ? 113 : 88
+			anchors {
+				right: parent.right
+				rightMargin: 5
+				top: parent.top
+			}
+			cache: false
+  		   	visible: dimState ? app.wasteIcon2Show : false		// only show if two icons
+		}
+
+		Image {
+			id: wasteIconzzSmall1Back
+			source: "file:///qmf/qml/apps/wastecollection/drawables/collectContainerDim.png"
+			height: isNxt ? 110 : 88
+			width: isNxt ? 113 : 88
+			anchors {
+				left: currentTempDisplayDim.left
+				leftMargin: 55
+				top: parent.top
+			}
+			cache: false
+			visible: dimState ? app.wasteIcon2BackShow : false	// only show if one icon and two containers needs to be collected
+		}
+
+		Image {
+			id: wasteIconzzSmall2Back
+			height: isNxt ? 110 : 88
+			width: isNxt ? 113 : 88
+			source: "file:///qmf/qml/apps/wastecollection/drawables/collectContainerDim.png"
+			anchors {
+				right: parent.right
+				rightMargin: 5
+				top: parent.top
+			}
+			cache: false
+   			visible: dimState ? app.wasteIcon2BackShow : false	// only show if one icon and two containers needs to be collected
+		}
+
+//TSC waste display end		
 	}
 }

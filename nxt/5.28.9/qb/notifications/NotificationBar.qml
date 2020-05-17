@@ -25,6 +25,11 @@ Item {
 	}
 
 	function show(expanded) {
+	
+//TSC mod to remove network errors in notification bar
+	notifications.removeByTypeSubType("error","network");
+//TSC mod end
+
 		if (notifications.count === 0 || blockConditions)
 			return;
 		cancelHideTimer();

@@ -3,6 +3,7 @@ import FileIO 1.0
 
 Item {
 	property int timezone: 1
+        property variant tsc: ({"rotateTiles":0,"rotateTilesDim":false,"rotateTilesSeconds":5,"hideToonLogo":0, "customToonLogo":0, "customToonLogoURL":"","hideErrorSystray":false,"showTime":false,"showDate":false,"noPreheatWhenAway":false,"summerMode":false})
 	property int screenTransitionEnabled: 0
 	property int screenTransitionDuration: 200
 	property bool lazyLoadscreensEnabled: true
@@ -23,6 +24,7 @@ Item {
 	property string heatingMode: "central"
 
 	property variant enabledApps: []
+	property variant customApps: [] // mod TSC
 
 	// adding a locale / language here? Please also update
 	// BackendlessStartup.qml property variant translations
@@ -56,11 +58,12 @@ Item {
 
 	/// Check whether all configured applications actually exist
 	function filterEnabledApps(appsToLoad) {
+		appsToLoad = appsToLoad.concat(customApps) // mod TSC
 		console.log("filterEnabledApps", appsToLoad);
 		var presentApps = qmlDir.dirEntries;
 		for (var a in appsToLoad) {
 			var appToCheck = appsToLoad[a];
-			if (presentApps.indexOf(appToCheck) === -1) {
+			if ((presentApps.indexOf(appToCheck) === -1) && (customApps.indexOf(appToCheck) === -1) ) { // mod TSC
 				appsToLoad.splice(appsToLoad.indexOf(appToCheck), 1);
 			}
 		}
@@ -209,6 +212,7 @@ Item {
 						"systemSettings",
 						"thermostatSettings",
 						"internetSettings",
+						"tscSettings",
 						"eMetersSettings",
 						"graph"]
 
@@ -255,7 +259,7 @@ Item {
 					appsToLoad.push("benchmark");
 				}
 				appsToLoad.push("controlPanel");
-				appsToLoad.push("weather");
+                              //TSC disabled: appsToLoad.push("weather");
 
 				if (feature.appStatusUsageEnabled()) {
 					// Status usage is only enabled with provider loyal customers

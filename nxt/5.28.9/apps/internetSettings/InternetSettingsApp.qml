@@ -457,6 +457,9 @@ App {
 			if (statemachine) {
 				var prevSmStatus = smStatus;
 				smStatus = parseInt(statemachine);
+//TSC mod start
+				if ( smStatus == _ST_INTERNET ) { smStatus = _ST_TUNNEL; upstreamConnectedState = true; errors = 0;}
+//TSC mod end
 
 				// When the state is bigger than previous state the internet connection is recovering. Stop the timeout timer
 				if (smStatus > prevSmStatus && smStatus >= _ST_INTERNET) {

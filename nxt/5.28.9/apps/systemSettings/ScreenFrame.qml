@@ -253,32 +253,6 @@ Widget {
 			}
 		}
 
-		SingleLabel {
-			id: feedbackLabel
-			width: parent.width
-			leftText: qsTr("Ask for my opinion")
-			iconSource: "image://scaled/images/feedback-label.svg"
-
-			OnOffToggle {
-				id: feedbackToggle
-				anchors {
-					verticalCenter: parent.verticalCenter
-					right: parent.right
-					rightMargin: Math.round(13 * horizontalScaling)
-				}
-				useOnOffTexts: false
-				leftText: qsTr("Never")
-				rightText: qsTr("Please")
-				isSwitchedOn: !FeedbackManager.optOut
-				useBoldChangeForLeftRight: true
-
-				onSelectedChangedByUser: {
-					FeedbackManager.optOut = positionIsLeft;
-					countly.sendEvent("Feedback.OptOut", null, null, -1, {"optOut": FeedbackManager.optOut});
-				}
-			}
-		}
-
 		Item {
 			id: spacer4
 			width: parent.width

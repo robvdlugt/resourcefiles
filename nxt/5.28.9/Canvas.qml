@@ -1,5 +1,8 @@
 import QtQuick 2.1
 import QtQuick.Window 2.0
+// TSC mod start
+import FileIO 1.0
+// TSC mod end
 import QtQuick.VirtualKeyboard 2.3
 import QtQuick.VirtualKeyboard.Settings 2.2
 
@@ -43,6 +46,15 @@ Window {
 	property DesignElements designElements: DesignElements{}
 	property ZWaveUtils zWaveUtils: ZWaveUtils{} // replace this by singleton in QQ2
 
+//TSC mod start 
+    property int customAppsToLoad
+	FileIO {
+                id: customFileIO
+        }
+    property alias qkeyboard: utilsApp.alphaNumericKeyboardScreen
+    property alias qnumKeyboard: utilsApp.numericKeyboardScreen
+
+//TSC mod end
 	property string locale: ""
 	property string localeCurrency: ""
 	property bool dimState: screenStateController.dimmedColors
@@ -274,6 +286,47 @@ Window {
 			}
 
 			if (--appsToLoad == 0) {
+//TSC mod start
+                     console.log("<<<<<<<<<<<<<<<<<<<<<<<<<< LOADING CUSTOM APPS >>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+                     var allApps = globals.enabledApps;
+                     var customAppsFound = [];
+                     customFileIO.source = "file:////qmf/qml/apps/";
+                     var presentApps = customFileIO.dirEntries.slice(0);
+                     for (var a in presentApps) {
+                             var appToCheck = presentApps[a];
+                             if (appToCheck.indexOf("-") === -1) {
+                                     customFileIO.source="file:////qmf/qml/apps/" + appToCheck + "/"
+                                     var checkAppQml =  appToCheck.charAt(0).toUpperCase() + appToCheck.slice(1) + "App.qml";
+                                     var checkAppQmlResult =  customFileIO.entryList([checkAppQml]);
+                                     if (checkAppQmlResult.length > 0) {
+                                             console.log("TSC found this app to be custom installed: " + appToCheck);
+                                             customAppsFound.push(appToCheck);
+                                     }
+                             }
+                     }
+		     globals.customApps = customAppsFound
+                     customAppsToLoad = globals.customApps.length;
+                     while (customAppsToLoad) {
+                             var appIdx = globals.customApps.length - customAppsToLoad;
+                             allApps.push(globals.customApps[appIdx]);
+
+                             var appUrl = globals.customApps[appIdx] + "/" + globals.customApps[appIdx].charAt(0).toUpperCase() + globals.customApps[appIdx].slice(1) + "App.qml";
+			     if (!CanvasJS.loadedApps[appUrl]) {
+
+                            	 console.log("==================================Loading " + globals.customApps[appIdx] + " app============================");
+                           	 var instance = util.loadComponent("file:////qmf/qml/apps/" + appUrl, canvas, {});
+                            	 if (instance) {
+					CanvasJS.loadedApps[appUrl] = (instance);
+                                	instance.init();
+                             	}
+			     }
+                             customAppsToLoad--;
+                      }
+                      globals.enabledAppsChanged.disconnect(loadApps);
+                      globals.enabledApps = allApps;
+                      globals.enabledAppsChanged.connect(loadApps);
+  				console.log("<<<<<<<<<<<<<<<<<<<<<<<<<< FINISHED CUSTOM APPS >>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+//TSC mod end
 				console.log("<<<<<<<<<<<<<<<<<<<<<<<<<< FINISHED LOADING APPS >>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 				dependencyResolver.notifyResolvingStarted();
 				dependencyResolver.setDependencyDone("Canvas.appsInitialized")

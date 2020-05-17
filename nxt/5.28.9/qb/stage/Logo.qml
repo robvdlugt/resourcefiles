@@ -13,7 +13,7 @@ Widget {
 	Image {
 		id: tenantlogo
 		anchors.centerIn: parent
-		source: "image://scaled/images/" + fileName + (dimState ? "_dim" : "") + ".svg"
+		source: globals.tsc["customToonLogo"] ? globals.tsc["customToonLogoURL"] : "image://scaled/images/" + fileName + (dimState ? "_dim" : "") + ".svg"
 		property string fileName: "logo"
 	}
 

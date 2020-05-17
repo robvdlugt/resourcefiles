@@ -17,7 +17,11 @@ App {
 	property url temperatureTileUrl: "TemperatureTile.qml"
 	property url temperatureCorrectionScreenUrl: "TemperatureCorrectionScreen.qml"
 
-	property double humidity: 0.0
+        property double humidity: 50.0 //default to 50% as it takes a while for the humidity to be calculated
+        property double primaryHumidity: 0.0
+        property double primaryTemperature: -273.0
+        property double ambientTemperature: -273.0
+
 	property double eco2: 0.0
 	property int tvoc: 0.0
 
@@ -31,6 +35,7 @@ App {
 		id: p
 
 		property string primaryHumidityDevUuid
+		property string ambientHumidityDevUuid
 		property string humidityTileRegistrationUuid
 		property string vocDevUuid
 		property string vocNowTileRegistrationUuid
@@ -130,7 +135,7 @@ App {
 					p.vocNowTileRegistrationUuid = registry.registerWidget("tile", vocNowTileUrl, airQualityApp, null, {thumbLabel: qsTr("Air Quality"), thumbIcon: Qt.resolvedUrl("drawables/vocThumbIcon.svg"), thumbCategory: "ventilation", thumbIconVAlignment: "center"});
 					p.eco2NowTileRegistrationUuid = registry.registerWidget("tile", eco2NowTileUrl, airQualityApp, null, {thumbLabel: "CO₂", thumbIcon: Qt.resolvedUrl("drawables/co2ThumbIcon.svg"), thumbCategory: "ventilation", thumbIconVAlignment: "center"});
 				}
-
+		
 				if (devNode) {
 					for (var device = devNode.getChild("device"); device; device = device.next) {
 						var deviceType = device.getAttribute("type");
@@ -150,6 +155,12 @@ App {
 							if (deviceUuid)
 								p.vocDevUuid = deviceUuid;
 						}
+                                                if (deviceType === "urn:schemas-hcb-hae-com:device:temperatureHumidityAmbient")
+                                                {
+                                                        var deviceUuid = device.getAttribute("uuid");
+                                                        if (deviceUuid)
+                                                                p.ambientHumidityDevUuid = deviceUuid;
+                                                }
 					}
 				}
 			} else {
@@ -179,7 +190,43 @@ App {
 		onNotificationReceived : {
 			var value;
 			if ((value = message.getArgument("CurrentHumidity")))
-				humidity = value;
+				primaryHumidity = value;
+		}
+	}
+	BxtNotifyHandler {
+		id:temperatureInfoNotifyHandler
+		sourceUuid: p.primaryHumidityDevUuid
+		serviceId: "TemperatureSensor"
+		initialPoll: true
+		variables: ["CurrentTemperature"]
+		onNotificationReceived : {
+			var value;
+			if ((value = message.getArgument("CurrentTemperature")))
+				primaryTemperature = value;
+		}
+	}
+	BxtNotifyHandler {
+		id: ambientTempratureInfoNotifyHandler
+		sourceUuid: p.ambientHumidityDevUuid
+		serviceId: "TemperatureSensor"
+		initialPoll: true
+		variables: ["CurrentTemperature"]
+		onNotificationReceived : {
+			var value;
+			if ((value = message.getArgument("CurrentTemperature")))
+			{
+				ambientTemperature = value;
+				if ((primaryHumidity > 0) && (primaryTemperature > -273) )
+				{
+					// we now can calculate the ambient humidity
+					// first we need to calculate the actual vapure pressure from the measured temperature and relative humidity
+					var saturatedVapurePressurePrimary = 6.11 * Math.pow(10, (7.5 * primaryTemperature / (237.7 + primaryTemperature) ));
+					var actualVapurePressure = (primaryHumidity * saturatedVapurePressurePrimary) / 100;
+					// then calculate the ambient relative humidity based on the ambient temperature 
+					var saturatedVapurePressureAmbient = 6.11 * Math.pow(10, (7.5 * ambientTemperature / (237.7 + ambientTemperature) ));
+					humidity = 100 * (actualVapurePressure / saturatedVapurePressureAmbient );
+				}
+			}
 		}
 	}
 

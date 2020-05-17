@@ -90,6 +90,45 @@ SidePanelButton {
 		}
 	}
 
+//TSC waste show mod start
+
+	Image {
+		id: wasteIconHide
+		source: app.wasteControlIcon
+		anchors {
+			baseline: parent.top
+			right: parent.right
+		}
+		cache: false
+       		visible: dimState ? false : (app.wasteIconShow || app.wasteIcon2Show) // only show in non-dim state if icons are displayed in dimstate
+		MouseArea {
+			id: hideIcon
+			anchors.fill: parent
+			onClicked: {
+				if (app.wasteIconShow) {
+					if (app.wasteIconBackShow) {
+						app.wasteIconBackShow = false;
+						app.wasteIconShow = false;
+					} else {
+						app.wasteIconBackShow = true;
+						app.wasteControlIcon = "file:///qmf/qml/apps/wastecollection/drawables/iconHide.png";
+					}
+				}
+				if (app.wasteIcon2Show) {
+					if (app.wasteIcon2BackShow) {
+						app.wasteIcon2BackShow = false;
+						app.wasteIcon2Show = false;
+					} else {
+						app.wasteIcon2BackShow = true;
+						app.wasteControlIcon = "file:///qmf/qml/apps/wastecollection/drawables/iconHide.png";
+					}
+				}
+			}
+		}
+	}
+
+//TSC waste show mod end
+
 	Connections {
 		target: canvas
 		onDimStateChanged: {

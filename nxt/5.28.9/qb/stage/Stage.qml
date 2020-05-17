@@ -14,6 +14,7 @@ App {
 	property url homeScreenUrl
 	property url menuScreenUrl
 	property Widget logo
+	property Widget dateTime
 	property Widget backButton
 	property Widget menuButton
 	property Widget homeButton
@@ -21,6 +22,7 @@ App {
 	property Widget cancelButton
 	property Widget customButton
 	property url logoUrl : "qrc:/qb/stage/Logo.qml"
+	property url dateTimeUrl : "qrc:/qb/stage/DateTime.qml"
 	property url backButtonUrl : "qrc:/qb/stage/BackButton.qml"
 	property url menuButtonUrl : "qrc:/qb/stage/MenuButton.qml"
 	property url homeButtonUrl : "qrc:/qb/stage/HomeButton.qml"
@@ -46,6 +48,7 @@ App {
 		StageJs.screenTitleComponent = screenTitle;
 		StageJs.screenTitleIconComponent = screenIcon;
 		registry.registerWidgetContainer("screen", stage);
+		registry.registerWidget("topLeft", dateTimeUrl, stage, "dateTime");
 		registry.registerWidget("topLeft", logoUrl, stage, "logo");
 		registry.registerWidget("topLeft", backButtonUrl, stage, "backButton");
 		registry.registerWidget("topLeft", homeIconButtonUrl, stage, "homeButton");
@@ -71,6 +74,8 @@ App {
 		function dimStateChanged() {
 			if (stage.menuButton) stage.menuButton.visible = isNormalMode && onRootScreen && !dimState;
 			if (StageJs.systrayContainer) StageJs.systrayContainer.visible = (onRootScreen || isMenuScreen) && !dimState;
+                        if (stage.logo && (globals.tsc["hideToonLogo"] === 1)) stage.logo.visible = !dimState
+                        if (stage.dateTime && (globals.tsc["hideToonLogo"] !== 0)) stage.dateTime.visible = dimState
 		}
 
 		function dialogShowingChanged() {
@@ -263,7 +268,8 @@ App {
 		if (stage.backButton) stage.backButton.visible = !isTopScreen && !hasCancelButton && hasBackButton;
 		if (stage.saveButton) stage.saveButton.visible = hasSaveButton;
 		if (stage.cancelButton) stage.cancelButton.visible = hasCancelButton;
-		if (stage.logo) stage.logo.visible = isNormalMode && (onRootScreen || isMenuScreen);
+		if (stage.logo) stage.logo.visible = isNormalMode && (onRootScreen || isMenuScreen) && (globals.tsc["hideToonLogo"] !== 2 );
+		if (stage.dateTime) stage.dateTime.visible = dimState && globals.tsc["hideToonLogo"] !== 0
 		if (StageJs.systrayContainer) StageJs.systrayContainer.visible = (onRootScreen || isMenuScreen) && !dimState;
 
 		return StageJs.currentFullScreenComponent;

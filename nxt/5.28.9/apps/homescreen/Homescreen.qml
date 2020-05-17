@@ -12,6 +12,11 @@ Screen {
 	anchors.fill: parent
 
 	property HomescreenApp app
+// start mod rotating tiles
+	property string baseSetTilesUrl
+	property int indexRotatingTile : 2			//startvalue = 2 to skip the first two tiles (top row)
+	property variant loadedTilesWidgetInfo: []	//array to keep the active widgetInfo objects of each instantiated tile at startup
+// end   mod rotating tiles
 
 	property int tilesCount: 0 // The number of non-empty tiles
 	property int pagecount: 0
@@ -572,7 +577,67 @@ Screen {
 	Component.onCompleted: {
 		registry.registerWidgetContainer("prominent", rightPanelContainer)
 		registry.registerWidgetContainer("prominentTabButton", rightPanelTabContainer)
+// start mod rotating tiles
+		homescreenrotate.running = true;
+// end   mod rotating tiles
 	}
+// start mod rotating tiles
+
+	function rotateHomescreen() {
+		var newpage = currentPage + 1;
+		if (newpage >= pagecount - 1)
+			newpage = 0;
+		widgetNavBar.navigateBtn(newpage);
+	}
+
+	Timer {
+		id: homescreenrotate
+		interval: 10000				//first start after three minutes, after that update every choosen seconds 
+		triggeredOnStart: false			//can only be run once the page has loaded, not at start
+		running: false				//timer will be started in the onCompleted function right above after loading the page
+		repeat: true
+		onTriggered: rotateMenu()
+	}
+
+	function rotateMenu() {
+		if ( !globals.tsc["rotateTilesDim"] || canvas.dimState )  {
+                	switch(globals.tsc["rotateTiles"]) {
+                        	case 0: break;
+                        	case 1: rotateTileRightBottom(); break;
+                        	case 2: rotateTileLeftBottom(); rotateTileRightBottom(); break; 
+                        	case 3: rotateHomescreen(); break;
+                       		default: break; 
+			}
+                }
+		homescreenrotate.interval = globals.tsc["rotateTilesSeconds"] * 1000;
+	}
+
+
+	function rotateTileRightBottom() {
+		var currentPageContainer = tileContainer.children[0];
+
+		indexRotatingTile = indexRotatingTile + 1;
+		if (indexRotatingTile >= loadedTilesWidgetInfo.length) {
+			indexRotatingTile = 2;					//skip the first two at the top row of page 1
+		}
+		console.log("******** load tiles:" + indexRotatingTile + " of "  + loadedTilesWidgetInfo.length);
+		removeTileFromConfig(currentPageContainer.children[3].uuid);
+		createTile(loadedTilesWidgetInfo[indexRotatingTile].widgetInfo, 0, 3);
+	}
+
+	function rotateTileLeftBottom() {
+		var currentPageContainer = tileContainer.children[0];
+
+		indexRotatingTile = indexRotatingTile + 1;
+		if (indexRotatingTile >= loadedTilesWidgetInfo.length) {
+			indexRotatingTile = 2;					//skip the first two at the top row of page 1
+		}
+
+		removeTileFromConfig(currentPageContainer.children[2].uuid);
+		createTile(loadedTilesWidgetInfo[indexRotatingTile].widgetInfo, 0, 2);
+	}
+
+// end   mod rotating tiles
 
 	Connections {
 		target: screenStateController
@@ -637,6 +702,7 @@ Screen {
 				pageCount: pagecount
 				onNavigate: navigatePage(page)
 			}
+
 		}
 
 		Item {
@@ -914,6 +980,10 @@ Screen {
 								url.text = url.text.replace("/weatherInt/", "/weather/"); // WeatherInt was deleted
 
 								url = Qt.resolvedUrl("qrc:/" + url.text); // convert the relative path to the absolute one
+//TSC mod to change wrong qrc path to customapp file path
+								var newUrl = url.replace("qrc://", "file://"); //console.log("TSC pre tile config mod: ",url);
+								url = newUrl; //console.log("TSC post tile config mod: ",url);
+//TSC end mod
 								page = parseInt(page.text);
 								position = parseInt(position.text);
 
@@ -948,6 +1018,15 @@ Screen {
 									} else {
 										tileWidgetInfo = defaultWidgetInfo;
 									}
+// start mod rotating tiles - build array with loaded tiles at startup
+
+									var tempbaseTiles = loadedTilesWidgetInfo;
+									var newBaseTile = {};
+									newBaseTile.widgetInfo = tileWidgetInfo;
+									tempbaseTiles.push(newBaseTile);
+									loadedTilesWidgetInfo = tempbaseTiles;
+									console.log("*** added to loadedTilesWidgetInfo: " + url);
+// end   mod rotating tiles
 
 									createTile(tileWidgetInfo, page, position, uuid);
 									tmp[uuid] = 1;
