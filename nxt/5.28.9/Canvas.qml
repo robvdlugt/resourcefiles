@@ -588,7 +588,7 @@ Window {
 		anchors.fill: parent
 	}
 
-function BalloonMode(balloonmode) {
+function balloonMode(balloonmode) {
 	if (balloonmode == "Start"){isBalloonMode = true}
 	if (balloonmode == "Stop"){isBalloonMode = false}
 }
