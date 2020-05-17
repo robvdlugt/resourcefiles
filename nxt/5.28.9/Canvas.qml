@@ -601,7 +601,7 @@ Rectangle {
 		Timer {
 			interval: 1000
 			repeat: true
-			running: false
+			running: isBalloonMode
 			onTriggered: {
 				var component = Qt.createComponent("qrc:/qb/components/Balloon.qml");
 				var balloon = component.createObject(balloonScreen);
@@ -609,7 +609,7 @@ Rectangle {
 				balloon.y = parent.height;
 			}
 		}
-
+		visible: isBalloonMode
 
     	}
 
