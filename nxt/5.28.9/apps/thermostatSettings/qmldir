@@ -1,0 +1,4 @@
+module apps.thermostatSettings
+
+ThermostatSettingsApp 1.0 ThermostatSettingsApp.qml
+TemperatureCorrectionScreen 1.0 TemperatureCorrectionScreen.qml

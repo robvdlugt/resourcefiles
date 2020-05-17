@@ -1,0 +1,8 @@
+module apps.inbox
+
+InboxScreen 1.0 InboxScreen.qml
+InboxApp 1.0 InboxApp.qml
+InboxFullScreenMsg 1.0 InboxFullScreenMsg.qml
+InboxTray 1.0 InboxTray.qml
+InboxMenu 1.0 InboxMenu.qml
+InboxMsgHeaderListItem 1.0 InboxMsgHeaderListItem.qml

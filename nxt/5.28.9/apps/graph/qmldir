@@ -1,0 +1,3 @@
+module apps.graph
+GraphApp 1.0 GraphApp.qml
+GraphScreen 1.0 GraphScreen.qml

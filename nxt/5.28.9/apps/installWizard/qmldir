@@ -1,0 +1,2 @@
+module apps.installWizard
+InstallWizardApp 1.0 InstallWizardApp.qml

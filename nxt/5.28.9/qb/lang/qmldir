@@ -1,0 +1,9 @@
+module qb.lang
+I18n 1.0 I18n.qml
+I18n_nl_NL 1.0 I18n_nl_NL.qml
+I18n_en_US 1.0 I18n_en_US.qml
+Currency 1.0 Currency.qml
+Currency_CHF 1.0 Currency_CHF.qml
+Currency_EUR 1.0 Currency_EUR.qml
+Currency_GBP 1.0 Currency_GBP.qml
+Currency_USD 1.0 Currency_USD.qml
