@@ -62,7 +62,7 @@ Window {
 	property bool firstLoadingDone: false
 	property bool isNormalMode: true
 	property bool isWizardMode: !isNormalMode
-	property bool isBalloonMode: false
+//BALLOOOOOOOON property bool isBalloonMode: false
 
 	property int appsToLoad
 	onAppsToLoadChanged: p.setPsplashProgress()
@@ -588,10 +588,10 @@ Window {
 		anchors.fill: parent
 	}
 
-function BalloonMode(balloonmode) {
-		if (balloonmode == "Start"){isBalloonMode = true}
-		if (balloonmode == "Stop"){isBalloonMode = false}
-	}
+//BALLOOOOOOOON function BalloonMode(balloonmode) {
+//BALLOOOOOOOON 		if (balloonmode == "Start"){isBalloonMode = true}
+//BALLOOOOOOOON 		if (balloonmode == "Stop"){isBalloonMode = false}
+//BALLOOOOOOOON 	}
 
 Rectangle {
         	id: balloonScreen
@@ -601,7 +601,8 @@ Rectangle {
 		Timer {
 			interval: 1000
 			repeat: true
-			running: isBalloonMode
+			running : true
+			//running: isBalloonMode
 			onTriggered: {
 				var component = Qt.createComponent("qrc:/qb/components/Balloon.qml");
 				var balloon = component.createObject(balloonScreen);
@@ -609,7 +610,7 @@ Rectangle {
 				balloon.y = parent.height;
 			}
 		}
-		visible: isBalloonMode
+//BALLOOOOOOOON 		visible: isBalloonMode
 
     	}
 
