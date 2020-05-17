@@ -595,10 +595,10 @@ Window {
 		Timer {
 			interval: 1000
 			repeat: true
-			running: showBalloons
+			running: true
 			onTriggered: {
 				var component = Qt.createComponent("qrc:/qb/components/Balloon.qml");
-				var balloon = component.createObject(game);
+				var balloon = component.createObject(balloonScreen);
 				balloon.x = ((Math.random() * parent.width)-60);
 				balloon.y = parent.height;
 			}
