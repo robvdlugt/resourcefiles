@@ -594,7 +594,7 @@ Window {
         anchors.fill: parent
 	Text{
 			font.pixelSize:  30
-         		text: "POWER ON"
+         		text: "BALLOOOOOOOOOOOOOOOOOOOOOON"
      		}
 
     	}
