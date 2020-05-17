@@ -750,6 +750,7 @@
 <file alias="qb/components/AreaGraph.qml">./qb/components/AreaGraph.qml</file>
 <file alias="qb/components/Balloon.qml">./qb/components/Balloon.qml</file>
 <file alias="qb/components/Balloon4SpriteSheet.png">./qb/components/Balloon4SpriteSheet.png</file>
+<file alias="qb/components/BalloonIcon.png.png">./qb/components/BalloonIcon.png.png</file>
 <file alias="qb/components/BarButton.qml">./qb/components/BarButton.qml</file>
 <file alias="qb/components/BasePopup.qml">./qb/components/BasePopup.qml</file>
 <file alias="qb/components/BottomTabBar.qml">./qb/components/BottomTabBar.qml</file>
