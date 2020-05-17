@@ -609,7 +609,7 @@ Window {
 				balloon.y = parent.height;
 			}
 		}
-		visible: isBalloonMode
+		//visible: isBalloonMode
     	}
 
 	Loader {
