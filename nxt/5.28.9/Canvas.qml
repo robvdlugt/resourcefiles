@@ -589,8 +589,8 @@ Window {
 
  Rectangle {
         	id: balloonScreen
-        	color: "red"
-        	opacity: 0.5
+        	color: "transparent"
+        	//opacity: 0.5
         	anchors.fill: parent
 		Timer {
 			interval: 1000
