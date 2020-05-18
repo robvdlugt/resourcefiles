@@ -604,7 +604,7 @@ Window {
 	}
 
 	Rectangle {
-        	id: animationnScreen
+        	id: animationScreen
         	color: "transparent"
         	anchors.fill: parent
 		Timer {
@@ -613,7 +613,7 @@ Window {
 			//running : true
 			running: isAnimationMode
 			onTriggered: {
-				var component = Qt.createComponent(qmlAnimationURL);
+				var component = Qt.createComponent( "qrc:/qb/components/Balloon.qml");
 				var balloon = component.createObject(animationScreen);
 				balloon.x = ((Math.random() * parent.width)-60);
 				balloon.y = parent.height;
