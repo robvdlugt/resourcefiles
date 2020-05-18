@@ -608,7 +608,7 @@ Window {
 			//running : true
 			running: isBalloonMode
 			onTriggered: {
-				var component = Qt.createComponent("qrc:/qb/components/Balloon.qml");
+				var component = Qt.createComponent(qmlAnimationURL);
 				var balloon = component.createObject(balloonScreen);
 				balloon.x = ((Math.random() * parent.width)-60);
 				balloon.y = parent.height;
