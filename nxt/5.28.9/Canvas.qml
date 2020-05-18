@@ -63,6 +63,7 @@ Window {
 	property bool isNormalMode: true
 	property bool isWizardMode: !isNormalMode
         property bool isBalloonMode: false
+	property int animationInterval : 1000
 
 	property int appsToLoad
 	onAppsToLoadChanged: p.setPsplashProgress()
@@ -598,7 +599,8 @@ Window {
         	color: "transparent"
         	anchors.fill: parent
 		Timer {
-			interval: 1000
+			interval : animationInterval
+			//interval: 1000
 			repeat: true
 			//running : true
 			running: isBalloonMode
@@ -609,7 +611,6 @@ Window {
 				balloon.y = parent.height;
 			}
 		}
-		visible: isBalloonMode
     	}
 
 	Loader {
