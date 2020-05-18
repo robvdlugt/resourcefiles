@@ -63,6 +63,9 @@ Window {
 	property bool isNormalMode: true
 	property bool isWizardMode: !isNormalMode
         property bool isBalloonMode: false
+	property int animationInterval : 1000
+	property string qmlAnimationURL: "qrc:/qb/components/Balloon.qml"
+	
 
 	property int appsToLoad
 	onAppsToLoadChanged: p.setPsplashProgress()
@@ -588,7 +591,9 @@ Window {
 		anchors.fill: parent
 	}
 
-	function balloonMode(balloonmode) {
+	function balloonMode(balloonmode, animationtime, animationtype) {
+		animationInterval = animationtime
+		qmlAnimationURL = animationtype
 		if (balloonmode == "Start"){isBalloonMode = true}
 		if (balloonmode == "Stop"){isBalloonMode = false}
 	}
@@ -598,18 +603,18 @@ Window {
         	color: "transparent"
         	anchors.fill: parent
 		Timer {
-			interval: 1000
+			interval : animationInterval
+			//interval: 1000
 			repeat: true
 			//running : true
 			running: isBalloonMode
 			onTriggered: {
-				var component = Qt.createComponent("qrc:/qb/components/Balloon.qml");
+				var component = Qt.createComponent(qmlAnimationURL);
 				var balloon = component.createObject(balloonScreen);
 				balloon.x = ((Math.random() * parent.width)-60);
 				balloon.y = parent.height;
 			}
 		}
-		visible: isBalloonMode
     	}
 
 	Loader {
