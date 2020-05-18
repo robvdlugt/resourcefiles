@@ -598,7 +598,7 @@ Window {
 		if (balloonmode == "Start"){isBalloonMode = true}
 		if (balloonmode == "Stop"){isBalloonMode = false}
 		if (visibleindimstate == "yes"){isVisibleinDimState = true}
-		if (visibleindimstate == "no"){isBalloonMode = false}
+		if (visibleindimstate == "no"){isVisibleinDimState = false}
 	}
 
 	Rectangle {
