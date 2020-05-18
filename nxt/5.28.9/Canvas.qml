@@ -63,7 +63,9 @@ Window {
 	property bool isNormalMode: true
 	property bool isWizardMode: !isNormalMode
         property bool isAnimationMode: false
-
+	property int animationInterval: 1000
+	property string qmlAnimationURL: "qrc:qb/components/Balloon.qml"
+	
 	property int appsToLoad
 	onAppsToLoadChanged: p.setPsplashProgress()
 
