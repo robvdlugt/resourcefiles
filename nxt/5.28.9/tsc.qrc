@@ -890,5 +890,5 @@
 <file alias="qb/utils/ZWaveSecurityPopup.qml">./qb/utils/ZWaveSecurityPopup.qml</file>
 <file alias="qb/utils/ZWaveUtils.qml">./qb/utils/ZWaveUtils.qml</file>
 <file alias="qt-project.org/qmime/packages/freedesktop.org.xml">./qt-project.org/qmime/packages/freedesktop.org.xml</file>
-</qresource>
+</qresource> 
 </RCC>
