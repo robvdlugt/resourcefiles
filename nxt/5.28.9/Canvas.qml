@@ -590,7 +590,7 @@ Window {
 		anchors.fill: parent
 	}
 
-	function animationMode(animationmode, animationInterval, qmlAnimationURL) {
+	function animationMode(animationmode, animationInt, animationURL) {
 		//if (! animationInterval) {
 		//	console.log("No timer for animation interval");
 		//	return;
