@@ -51,7 +51,7 @@ Item {
 
         Image {
 			id: spriteImage
-			source: "http://localhost/images/RoachSprites.png"
+			source: "RoachSprites.png"
 			y:0
 			x:-parent.width*sprite.frame
         }
