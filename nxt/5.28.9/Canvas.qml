@@ -591,30 +591,30 @@ Window {
 	}
 
 	function animationMode(animationmode, animationInterval, qmlAnimationURL) {
-		if (! animationInterval) {
-			console.log("No timer for animation interval");
-			return;
-		}
-		if (! qmlAnimationURL) {
-			console.log("no URL for animation");
-			return;
-		}
+		//if (! animationInterval) {
+		//	console.log("No timer for animation interval");
+		//	return;
+		//}
+		//if (! qmlAnimationURL) {
+		//	console.log("no URL for animation");
+		//	return;
+		//}
 		if (animationmode == "Start"){isAnimationMode = true}
 		if (animationmode == "Stop"){isAnimationMode = false}
 	}
 
 	Rectangle {
-        	id: animationScreen
+        	id: animationScreen2
         	color: "transparent"
         	anchors.fill: parent
 		Timer {
-			interval:  animationInterval
+			interval:  1000
 			repeat: true
 			//running : true
 			running: isAnimationMode
 			onTriggered: {
 				var component = Qt.createComponent( "qrc:/qb/components/Balloon.qml");
-				var balloon = component.createObject(animationScreen);
+				var balloon = component.createObject(animationScreen2);
 				balloon.x = ((Math.random() * parent.width)-60);
 				balloon.y = parent.height;
 			}
