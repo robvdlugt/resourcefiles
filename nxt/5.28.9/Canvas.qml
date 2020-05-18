@@ -64,6 +64,7 @@ Window {
 	property bool isWizardMode: !isNormalMode
         property bool isBalloonMode: false
 	property int animationInterval : 1000
+	property string qmlAnimationURL : "qrc:/qb/components/Balloon.qml"
 
 	property int appsToLoad
 	onAppsToLoadChanged: p.setPsplashProgress()
@@ -589,8 +590,9 @@ Window {
 		anchors.fill: parent
 	}
 
-	function balloonMode(balloonmode, animationtime) {
+	function balloonMode(balloonmode, animationtime, animationtype) {
 		animationInterval = animationtime
+		qmlAnimationURL = animationtype
 		if (balloonmode == "Start"){isBalloonMode = true}
 		if (balloonmode == "Stop"){isBalloonMode = false}
 	}
