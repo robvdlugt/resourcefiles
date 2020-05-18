@@ -889,4 +889,4 @@
 <file alias="qb/utils/ZWaveUtils.qml">./qb/utils/ZWaveUtils.qml</file>
 <file alias="qt-project.org/qmime/packages/freedesktop.org.xml">./qt-project.org/qmime/packages/freedesktop.org.xml</file>
 </qresource>
-</RCC>
+</RCC> 
