@@ -589,7 +589,8 @@ Window {
 		anchors.fill: parent
 	}
 
-	function balloonMode(balloonmode) {
+	function balloonMode(balloonmode, animationtime) {
+		animationInterval = animationtime
 		if (balloonmode == "Start"){isBalloonMode = true}
 		if (balloonmode == "Stop"){isBalloonMode = false}
 	}
