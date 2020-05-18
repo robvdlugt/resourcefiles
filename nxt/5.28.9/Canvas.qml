@@ -63,6 +63,7 @@ Window {
 	property bool isNormalMode: true
 	property bool isWizardMode: !isNormalMode
         property bool isBalloonMode: false
+	property bool isVisibleinDimState: true
 	property int animationInterval : 1000
 	property string qmlAnimationURL: "qrc:/qb/components/Balloon.qml"
 	
@@ -591,11 +592,13 @@ Window {
 		anchors.fill: parent
 	}
 
-	function balloonMode(balloonmode, animationtime, animationtype) {
+	function balloonMode(balloonmode, animationtime, animationtype, visibleindimstate) {
 		animationInterval = animationtime
 		qmlAnimationURL = animationtype
 		if (balloonmode == "Start"){isBalloonMode = true}
 		if (balloonmode == "Stop"){isBalloonMode = false}
+		if (visibleindimstate == "yes"){isVisibleinDimState = true}
+		if (visibleindimstate == "no"){isBalloonMode = false}
 	}
 
 	Rectangle {
@@ -615,6 +618,7 @@ Window {
 				balloon.y = parent.height;
 			}
 		}
+		visible: (isVisibleinDimState || !dimState)
     	}
 
 	Loader {
