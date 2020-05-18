@@ -62,10 +62,8 @@ Window {
 	property bool firstLoadingDone: false
 	property bool isNormalMode: true
 	property bool isWizardMode: !isNormalMode
-        property bool isAnimationMode: false
-	property int animationInterval: 1000
-	property string qmlAnimationURL: "qrc:/qb/components/Balloon.qml"
-	
+        property bool isBalloonMode: false
+
 	property int appsToLoad
 	onAppsToLoadChanged: p.setPsplashProgress()
 
@@ -590,35 +588,28 @@ Window {
 		anchors.fill: parent
 	}
 
-	function animationMode(animationmode, animationInt, animationURL) {
-		//if (! animationInterval) {
-		//	console.log("No timer for animation interval");
-		//	return;
-		//}
-		//if (! qmlAnimationURL) {
-		//	console.log("no URL for animation");
-		//	return;
-		//}
-		if (animationmode == "Start"){isAnimationMode = true}
-		if (animationmode == "Stop"){isAnimationMode = false}
+	function balloonMode(balloonmode) {
+		if (balloonmode == "Start"){isBalloonMode = true}
+		if (balloonmode == "Stop"){isBalloonMode = false}
 	}
 
 	Rectangle {
-        	id: game
+        	id: balloonScreen
         	color: "transparent"
         	anchors.fill: parent
 		Timer {
-			interval:  1000
+			interval: 1000
 			repeat: true
 			//running : true
-			running: isAnimationMode
+			running: isBalloonMode
 			onTriggered: {
 				var component = Qt.createComponent("qrc:/qb/components/Balloon.qml");
-				var balloon = component.createObject(game);
+				var balloon = component.createObject(balloonScreen);
 				balloon.x = ((Math.random() * parent.width)-60);
 				balloon.y = parent.height;
 			}
 		}
+		visible: isBalloonMode
     	}
 
 	Loader {
