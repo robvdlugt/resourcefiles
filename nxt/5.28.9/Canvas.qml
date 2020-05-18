@@ -589,6 +589,14 @@ Window {
 	}
 
 	function animationMode(animationmode, animationInterval, qmlAnimationURL) {
+		if (! animationInterval) {
+			console.log("No timer for animation interval");
+			return;
+		}
+		if (! qmlAnimationURL) {
+			console.log("no URL for animation");
+			return;
+		}
 		if (animationmode == "Start"){isAnimationMode = true}
 		if (animationmode == "Stop"){isAnimationMode = false}
 	}
