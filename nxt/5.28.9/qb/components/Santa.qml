@@ -10,7 +10,7 @@ Item {
     width: 120
     height: 120
     x: -60
-    y: parent.height - 100
+    y: parent.height - 108
 
 
     Item {
