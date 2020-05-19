@@ -62,13 +62,16 @@ Window {
 	property bool firstLoadingDone: false
 	property bool isNormalMode: true
 	property bool isWizardMode: !isNormalMode
+
+//TSC animation MOD Start
         property bool isBalloonMode: false
 	property bool isVisibleinDimState: true
 	property int animationInterval : 1000
 	property string qmlAnimationURL: "qrc:/qb/components/Balloon.qml"
 	
+//TSC animation MOD End	
 
-	property int appsToLoad
+	property int appsToLoad//TSC animation MOD Start
 	onAppsToLoadChanged: p.setPsplashProgress()
 
 	signal queuedSignal
@@ -592,6 +595,7 @@ Window {
 		anchors.fill: parent
 	}
 
+//TSC animation MOD Start
 	function balloonMode(balloonmode, animationtime, animationtype, visibleindimstate) {
 		animationInterval = animationtime
 		qmlAnimationURL = animationtype
@@ -647,6 +651,9 @@ Window {
 			}
 		}
 	}
+
+//TSC animation MOD End
+
 
 	BxtResponseHandler {
 		id: packageConfigResponseHandler
