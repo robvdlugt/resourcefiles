@@ -46,6 +46,14 @@ Window {
 	property DesignElements designElements: DesignElements{}
 	property ZWaveUtils zWaveUtils: ZWaveUtils{} // replace this by singleton in QQ2
 
+//TSC animation MOD Start
+        property bool isBalloonMode: false
+	property bool isVisibleinDimState: true
+	property int animationInterval : 1000
+	property string qmlAnimationURL: "qrc:/qb/components/Balloon.qml"
+	
+//TSC animation MOD End	
+
 //TSC mod start
     property int customAppsToLoad
 	FileIO {
@@ -585,6 +593,37 @@ Window {
 		color: colors.splashScreenBackground
 		anchors.fill: parent
 	}
+
+//TSC animation MOD Start
+	function balloonMode(balloonmode, animationtime, animationtype, visibleindimstate) {
+		if (animationtime === undefined) animationtime = 1000
+		if (animationtype === undefined) animationtype = "qrc:/qb/components/Balloon.qml"
+		if (visibleindimstate === undefined) visibleindimstate = false
+		
+		animationInterval = animationtime
+		qmlAnimationURL = animationtype
+		if (balloonmode == "Start"){isBalloonMode = true}
+		if (balloonmode == "Stop"){isBalloonMode = false}
+		if (visibleindimstate == "yes"){isVisibleinDimState = true}
+		if (visibleindimstate == "no"){isVisibleinDimState = false}
+	}
+
+	Rectangle {
+        	id: balloonScreen
+        	color: "transparent"
+        	anchors.fill: parent
+		Timer {
+			interval : animationInterval
+			repeat: true
+			triggeredOnStart: true
+			running: isBalloonMode
+			onTriggered: {
+				var component = Qt.createComponent(qmlAnimationURL);
+				var balloon = component.createObject(balloonScreen);
+			}
+		}
+		visible: (isVisibleinDimState || !dimState)
+    	}
 
 	Loader {
 		id: backendlessStartupLoader
