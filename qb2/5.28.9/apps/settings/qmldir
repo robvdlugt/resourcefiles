@@ -1,0 +1,3 @@
+module apps.settings
+SettingsScreen 1.0 SettingsScreen.qml
+

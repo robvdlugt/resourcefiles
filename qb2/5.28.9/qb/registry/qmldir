@@ -1,0 +1,3 @@
+module qb.registry
+Registry 1.0 Registry.qml
+WidgetInfo 1.0 WidgetInfo.qml

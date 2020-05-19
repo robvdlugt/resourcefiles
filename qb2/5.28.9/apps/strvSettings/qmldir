@@ -1,0 +1,3 @@
+module apps.strvSettings
+StrvSettingsApp 1.0 StrvSettingsApp.qml
+EditBlockScreen 1.0 EditBlockScreen.qml

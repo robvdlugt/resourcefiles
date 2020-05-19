@@ -1,0 +1,4 @@
+module apps.eMetersSettings
+EMetersSettingsApp 1.0 EMetersSettingsApp.qml
+OverviewEMetersScreen 1.0 OverviewEMetersScreen.qml
+Constants 1.0 Constants.js

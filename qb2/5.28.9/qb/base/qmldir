@@ -1,0 +1,7 @@
+module qb.base
+App 1.0 App.qml
+BaseTile 1.0 BaseTile.qml
+Globals 1.0 Globals.qml
+Util 1.0 Util.qml
+Widget 1.0 Widget.qml
+WidgetContainer 1.0 WidgetContainer.qml

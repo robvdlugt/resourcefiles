@@ -1,0 +1,3 @@
+module apps.solar
+
+SolarApp 1.0 SolarApp.qml
