@@ -79,19 +79,19 @@ Item {
                roach.destroy();
             }
 
-            if (isNext && (roach.y - roach.height >  600)) {
+            if (isNxt && (roach.y - roach.height >  600)) {
                roach.destroy();
             }
 	    
-	    if (!isNext && (roach.y - roach.height > 480)) {
+	    if (!isNxt && (roach.y - roach.height > 480)) {
                roach.destroy();
             }
 
-            if (isNext && (roach.x - roach.width > 1024)) {
+            if (isNxt && (roach.x - roach.width > 1024)) {
                roach.destroy();
             }
 	    
-	    if (!isNext && (roach.x - roach.width > 600)) {
+	    if (!isNxt && (roach.x - roach.width > 600)) {
                roach.destroy();
             }
 
