@@ -616,7 +616,7 @@ Window {
 		Timer {
 			interval : animationInterval
 			repeat: true
-			triggeredOnStart:true
+			triggeredOnStart: true
 			running: isBalloonMode
 			onTriggered: {
 				var component = Qt.createComponent(qmlAnimationURL);
