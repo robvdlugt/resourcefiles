@@ -620,8 +620,6 @@ Window {
 			onTriggered: {
 				var component = Qt.createComponent(qmlAnimationURL);
 				var balloon = component.createObject(balloonScreen);
-				balloon.x = ((Math.random() * parent.width)-60);
-				balloon.y = parent.height;
 			}
 		}
 		visible: (isVisibleinDimState || !dimState)
