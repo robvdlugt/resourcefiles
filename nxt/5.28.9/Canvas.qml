@@ -597,6 +597,11 @@ Window {
 
 //TSC animation MOD Start
 	function balloonMode(balloonmode, animationtime, animationtype, visibleindimstate) {
+	
+		if (typeof animationtime === "undifined"){ animationtime = 1000; console.log("Failed to load locale animationtime");}
+		if (typeof animationtype === "undifined"){ animationtype = "qrc:/qb/components/Balloon.qml"; console.log("Failed to load locale animationtype");}
+		if (typeof visibleindimstate === "undifined"){ visibleindimstate = "no"; console.log("Failed to load locale visibleindimstate");}
+		
 		animationInterval = animationtime
 		qmlAnimationURL = animationtype
 		if (balloonmode == "Start"){isBalloonMode = true}
