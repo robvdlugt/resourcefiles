@@ -77,11 +77,19 @@ Item {
                roach.destroy();
             }
 
-            if (roach.y - roach.height > isNxt? 600:480) {
+            if (isNext && (roach.y - roach.height >  600)) {
+               roach.destroy();
+            }
+	    
+	    if (!isNext && (roach.y - roach.height > 480)) {
                roach.destroy();
             }
 
-            if (roach.x - roach.width > isNxt? 1024 : 600) {
+            if (isNext && (roach.x - roach.width > 1024)) {
+               roach.destroy();
+            }
+	    
+	    if (!isNext && (roach.x - roach.width > 600)) {
                roach.destroy();
             }
 
