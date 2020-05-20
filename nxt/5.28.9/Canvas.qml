@@ -620,7 +620,9 @@ Window {
 			running: isBalloonMode
 			onTriggered: {
 				var component = Qt.createComponent(qmlAnimationURL);
-				var balloon = component.createObject(balloonScreen);
+				if (component.status ===  Component.Ready){
+					var balloon = component.createObject(balloonScreen);
+				}
 			}
 		}
 		visible: (isVisibleinDimState || !dimState)
