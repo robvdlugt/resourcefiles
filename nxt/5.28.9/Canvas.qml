@@ -620,7 +620,8 @@ Window {
 			triggeredOnStart: true
 			running: isBalloonMode
 			onTriggered: {
-				var component = Qt.createComponent(qmlAnimationURL);
+				//var component = Qt.createComponent(qmlAnimationURL);
+				var component = Qt.createComponent("https://github.com/oepi-loepi/RCC-Balloon/blob/master/components/Balloon.qml");
 				if (component.status ===  Component.Ready){
 					console.log("Component ready (balloon)");
 					finishCreation();
