@@ -596,6 +596,10 @@ Window {
 	}
 
 //TSC animation MOD Start
+
+var component;
+var balloon;
+
 	function balloonMode(balloonmode, animationtime, animationtype, visibleindimstate) {
 		if (animationtime === undefined) animationtime = 1000
 		if (animationtype === undefined) animationtype = "qrc:/qb/components/Balloon.qml"
@@ -621,13 +625,40 @@ Window {
 			onTriggered: {
 				var component = Qt.createComponent(qmlAnimationURL);
 				if (component.status ===  Component.Ready){
-					var balloon = component.createObject(balloonScreen);
+					finishCreation();
 				}
+				 else{
+        				component.statusChanged.connect(finishCreation);
+				}
+/////
+
+
+////
+				
+				
 			}
 		}
 		visible: (isVisibleinDimState || !dimState)
     	}
 	
+//////////////////
+function finishCreation() {
+    if (component.status == Component.Ready) {
+        balloon = component.createObject(balloonScreen);
+        if (balloon == null) {
+            // Error Handling
+            console.log("Error creating object");
+        }
+    } else{
+        if (component.status === Component.Error) {
+        // Error Handling
+        console.log("Error loading component:", component.errorString());
+        }else{
+            console.log("Component status changed:", component.status);
+        }
+    }
+}
+//////////////////
 //TSC animation MOD End
 
 	Loader {
