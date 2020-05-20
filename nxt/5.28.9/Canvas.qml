@@ -620,12 +620,7 @@ Window {
 			triggeredOnStart: true
 			running: isBalloonMode
 			onTriggered: {
-				//var component = Qt.createComponent(qmlAnimationURL);
-				//"qrc:/qb/components/Balloon.qml"
-				//var urltoqml = "file:///qmf/qml/apps/santa met rcc/test/Santa.qml";
-				//var urltoqml = "https:///github.com/oepi-loepi/RCC-Balloon/blob/master/components/Balloon.qml";
-				var component = Qt.createComponent(urltoqml);
-				//var component = Qt.createComponent("http://oepiloepi.eu/Roach.qml");
+				var component = Qt.createComponent(qmlAnimationURL);
 				if (component.status ===  Component.Ready){
 					console.log("Component ready (balloon)");
 					finishCreation();
@@ -633,24 +628,21 @@ Window {
 				 else{
         				component.statusChanged.connect(finishCreation);
 				}
-				//////////////////
-function finishCreation() {
-    if (component.status == Component.Ready) {
-        var balloon = component.createObject(balloonScreen);
-	console.log("Creating balloon");
-        if (balloon == null) {
-            console.log("Error creating object");
-        }
-    } else{
-        if (component.status === Component.Error) {
-        	console.log("Error loading component:", component.errorString());
-        }else{
-            console.log("Component status changed:", component.status);
-        }
-    }
-}
-//////////////////
-				
+				function finishCreation() {
+    					if (component.status == Component.Ready) {
+        					var balloon = component.createObject(balloonScreen);
+						console.log("Creating balloon");
+        					if (balloon == null) {
+            						console.log("Error creating object");
+        					}
+    					} else{
+        					if (component.status === Component.Error) {
+        						console.log("Error loading component:", component.errorString());
+        					}else{
+            						console.log("Component status changed:", component.status);
+        					}
+    					}
+				}	
 			}
 		}
 		visible: (isVisibleinDimState || !dimState)
