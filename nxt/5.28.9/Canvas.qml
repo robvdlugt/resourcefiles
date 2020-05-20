@@ -625,6 +625,8 @@ Window {
 		}
 		visible: (isVisibleinDimState || !dimState)
     	}
+	
+//TSC animation MOD End
 
 	Loader {
 		id: backendlessStartupLoader
@@ -653,7 +655,6 @@ Window {
 		}
 	}
 
-//TSC animation MOD End
 
 
 	BxtResponseHandler {
