@@ -622,8 +622,8 @@ Window {
 			onTriggered: {
 				//var component = Qt.createComponent(qmlAnimationURL);
 				//"qrc:/qb/components/Balloon.qml"
-				var urltoqml = "file:///qmf/qml/apps/santa met rcc/test/Santa.qml";
-				//var urltoqml = "https://github.com/oepi-loepi/RCC-Balloon/blob/master/components/Balloon.qml";
+				//var urltoqml = "file:///qmf/qml/apps/santa met rcc/test/Santa.qml";
+				var urltoqml = "https:///github.com/oepi-loepi/RCC-Balloon/blob/master/components/Balloon.qml";
 				var component = Qt.createComponent(urltoqml);
 				if (component.status ===  Component.Ready){
 					console.log("Component ready (balloon)");
