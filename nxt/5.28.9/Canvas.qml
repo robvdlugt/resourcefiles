@@ -622,6 +622,7 @@ Window {
 			onTriggered: {
 				var component = Qt.createComponent(qmlAnimationURL);
 				if (component.status ===  Component.Ready){
+					console.log("Component ready (balloon)");
 					finishCreation();
 				}
 				 else{
@@ -631,14 +632,13 @@ Window {
 function finishCreation() {
     if (component.status == Component.Ready) {
         var balloon = component.createObject(balloonScreen);
+	console.log("Creating balloon");
         if (balloon == null) {
-            // Error Handling
             console.log("Error creating object");
         }
     } else{
         if (component.status === Component.Error) {
-        // Error Handling
-        console.log("Error loading component:", component.errorString());
+        	console.log("Error loading component:", component.errorString());
         }else{
             console.log("Component status changed:", component.status);
         }
