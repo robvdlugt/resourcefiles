@@ -626,13 +626,8 @@ Window {
 				}
 				 else{
         				component.statusChanged.connect(finishCreation);
-				}		
-			}
-		}
-		visible: (isVisibleinDimState || !dimState)
-    	}
-	
-//////////////////
+				}
+				//////////////////
 function finishCreation() {
     if (component.status == Component.Ready) {
         var balloon = component.createObject(balloonScreen);
@@ -650,6 +645,13 @@ function finishCreation() {
     }
 }
 //////////////////
+				
+			}
+		}
+		visible: (isVisibleinDimState || !dimState)
+    	}
+	
+
 //TSC animation MOD End
 
 	Loader {
