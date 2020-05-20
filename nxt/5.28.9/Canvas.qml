@@ -597,9 +597,6 @@ Window {
 
 //TSC animation MOD Start
 
-var component;
-var balloon;
-
 	function balloonMode(balloonmode, animationtime, animationtype, visibleindimstate) {
 		if (animationtime === undefined) animationtime = 1000
 		if (animationtype === undefined) animationtype = "qrc:/qb/components/Balloon.qml"
@@ -629,13 +626,7 @@ var balloon;
 				}
 				 else{
         				component.statusChanged.connect(finishCreation);
-				}
-/////
-
-
-////
-				
-				
+				}		
 			}
 		}
 		visible: (isVisibleinDimState || !dimState)
@@ -644,7 +635,7 @@ var balloon;
 //////////////////
 function finishCreation() {
     if (component.status == Component.Ready) {
-        balloon = component.createObject(balloonScreen);
+        var balloon = component.createObject(balloonScreen);
         if (balloon == null) {
             // Error Handling
             console.log("Error creating object");
