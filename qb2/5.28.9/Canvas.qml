@@ -46,6 +46,7 @@ Window {
 	property DesignElements designElements: DesignElements{}
 	property ZWaveUtils zWaveUtils: ZWaveUtils{} // replace this by singleton in QQ2
 
+
 //TSC animation MOD Start
         property bool isBalloonMode: false
 	property bool isVisibleinDimState: true
@@ -53,6 +54,7 @@ Window {
 	property string qmlAnimationURL: "qrc:/qb/components/Balloon.qml"
 	
 //TSC animation MOD End	
+
 
 //TSC mod start
     property int customAppsToLoad
@@ -594,7 +596,8 @@ Window {
 		anchors.fill: parent
 	}
 
-//TSC animation MOD Start
+/////TSC animation MOD Start
+
 	function balloonMode(balloonmode, animationtime, animationtype, visibleindimstate) {
 		if (animationtime === undefined) animationtime = 1000
 		if (animationtype === undefined) animationtype = "qrc:/qb/components/Balloon.qml"
@@ -619,11 +622,34 @@ Window {
 			running: isBalloonMode
 			onTriggered: {
 				var component = Qt.createComponent(qmlAnimationURL);
-				var balloon = component.createObject(balloonScreen);
+				if (component.status ===  Component.Ready){
+					console.log("Component ready (balloon)");
+					finishCreation();
+				}
+				 else{
+        				component.statusChanged.connect(finishCreation);
+				}
+				function finishCreation() {
+    					if (component.status == Component.Ready) {
+        					var balloon = component.createObject(balloonScreen);
+						console.log("Creating balloon");
+        					if (balloon == null) {
+            						console.log("Error creating object");
+        					}
+    					} else{
+        					if (component.status === Component.Error) {
+        						console.log("Error loading component:", component.errorString());
+        					}else{
+            						console.log("Component status changed:", component.status);
+        					}
+    					}
+				}	
 			}
 		}
 		visible: (isVisibleinDimState || !dimState)
     	}
+	
+/////TSC animation MOD End
 
 	Loader {
 		id: backendlessStartupLoader
