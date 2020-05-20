@@ -595,7 +595,7 @@ Window {
 		anchors.fill: parent
 	}
 
-//TSC animation MOD Start
+/////TSC animation MOD Start
 
 	function balloonMode(balloonmode, animationtime, animationtype, visibleindimstate) {
 		if (animationtime === undefined) animationtime = 1000
@@ -648,8 +648,7 @@ Window {
 		visible: (isVisibleinDimState || !dimState)
     	}
 	
-
-//TSC animation MOD End
+/////TSC animation MOD End
 
 	Loader {
 		id: backendlessStartupLoader
