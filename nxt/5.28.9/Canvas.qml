@@ -596,7 +596,7 @@ Window {
 	}
 
 /////TSC animation MOD Start
-
+ 
 //	function checkforAnimation() {
 //		try {
 //			var xmlhttp = new XMLHttpRequest();
@@ -625,7 +625,7 @@ Window {
 //		} catch(e) {
 //		}
 //	}
-
+ 
 //	Timer {
 //		id: animationcheckTimer
 //		interval: 300000
