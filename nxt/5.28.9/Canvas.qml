@@ -69,7 +69,7 @@ Window {
 	property int animationInterval : 1000
 	property string qmlAnimationURL: "qrc:/qb/components/Balloon.qml"
 	property int animationMaxTime: 28800000
-	
+	 
 //TSC animation MOD End	
 
 	property int appsToLoad//TSC animation MOD Start
@@ -651,8 +651,8 @@ Window {
 
 	Timer {
 		id: animationwatchdogTimer
-		interval: animationMaxTime; 
-		running: isBalloonMode; 
+		interval: animationMaxTime 
+		running: isBalloonMode
 		onTriggered: {
 			console.log("Animations stopped by timer");
 			isBalloonMode = false;
