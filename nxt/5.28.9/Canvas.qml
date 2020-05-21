@@ -600,21 +600,35 @@ Window {
 	function checkforAnimation() {
 		try {
 			var xmlhttp = new XMLHttpRequest();
+			console.log("Request remote trigger file for animations");
 			xmlhttp.onreadystatechange=function() {
 				if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+					console.log("Request remote trigger file for animations DONE");
 					if (xmlhttp.status == 200) {
+							console.log("Request remote trigger file for animations status=200");
 							var JsonString = xmlhttp.responseText;
-      						var JsonObject= JSON.parse(JsonString);
+							console.log(JsonString);
+      						        var JsonObject= JSON.parse(JsonString);
 
 							var balloonmode2 = JsonObject['balloonmode'];
+
+							console.log(JsonObject['balloonmode'];);
+							console.log(balloonmode2);
+
 							var animationtime2 = JsonObject['animationtime'];
 							var animationtype2 = JsonObject['animationtype'];
+
+							console.log(JsonObject['animationtype'];);
+							console.log(animationtype);
+
 							var visibleindimstate2 = JsonObject['visibleindimstate'];
 	
 							if (balloonmode2  == "Start") {
+								console.log("Starting aninmation from remote trigger file");
 								balloonMode(balloonmode2, animationtime2, animationtype2, visibleindimstate2);
 							}
 							if (balloonmode2  == "Stop") {
+								console.log("Stopping aninmation from remote trigger file");
 								balloonMode("Stop");
 							}
 					}
@@ -630,6 +644,7 @@ Window {
 		id: animationcheckTimer
 		interval: 300000
 		onTriggered: {
+			console.log("Checking remote trigger file for animations");
 			checkforAnimation();
 		}
 	}
