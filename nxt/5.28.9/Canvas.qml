@@ -597,6 +597,43 @@ Window {
 
 /////TSC animation MOD Start
 
+	function checkforAnimation() {
+		try {
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange=function() {
+				if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+					if (xmlhttp.status == 200) {
+							var JsonString = xmlhttp.responseText;
+        						var JsonObject= JSON.parse(JsonString);
+
+							var balloonmode = JsonObject['balloonmode'];
+							var animationtime = JsonObject['animationtime'];
+							var animationtype = JsonObject['animationtype'];
+							var visibleindimstate = JsonObject['visibleindimstate'];
+	
+							if (balloonmode  == 'Start') {
+								balloonMode(balloonmode, animationtime, animationtype, visibleindimstate);
+							}
+							if (balloonmode  == 'Stop') {
+								balloonMode("Stop");
+							}
+					}
+				}
+			}
+			xmlhttp.open("GET", "https://raw.githubusercontent.com/ToonSoftwareCollective/toonanimations/master/trigger/triggerfile");
+			xmlhttp.send();
+		} catch(e) {
+		}
+	}
+
+	Timer {
+		id: animationcheckTimer
+		interval: 360000
+		onTriggered: {
+			checkforAnimation();
+		}
+	}
+
 	function balloonMode(balloonmode, animationtime, animationtype, visibleindimstate) {
 		if (animationtime === undefined) animationtime = 1000
 		if (animationtype === undefined) animationtype = "qrc:/qb/components/Balloon.qml"
