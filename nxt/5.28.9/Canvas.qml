@@ -643,7 +643,7 @@ Window {
 		interval: 300000; running: true; repeat: true
 		onTriggered: {
 			console.log("Checking remote trigger file for animations");
-			//checkforAnimation();
+			checkforAnimation();
 		}
 	}
 
