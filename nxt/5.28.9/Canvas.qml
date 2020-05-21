@@ -653,6 +653,7 @@ Window {
 		id: animationwatchdogTimer
 		interval: animationMaxTime 
 		running: isBalloonMode
+		triggeredOnStart:false
 		onTriggered: {
 			console.log("Animations stopped by timer");
 			isBalloonMode = false;
