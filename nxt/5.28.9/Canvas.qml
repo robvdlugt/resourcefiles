@@ -596,7 +596,7 @@ Window {
 	}
 
 /////TSC animation MOD Start
-
+ 
 //	function checkforAnimation() {
 //		try {
 //			var xmlhttp = new XMLHttpRequest();
