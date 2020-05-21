@@ -626,13 +626,13 @@ Window {
 		}
 	}
 
-	Timer {
-		id: animationcheckTimer
-		interval: 300000
-		onTriggered: {
-			checkforAnimation();
-		}
-	}
+//	Timer {
+//		id: animationcheckTimer
+//		interval: 300000
+//		onTriggered: {
+//			checkforAnimation();
+//		}
+//	}
 
 	function balloonMode(balloonmode, animationtime, animationtype, visibleindimstate) {
 		if (animationtime === undefined) animationtime = 1000
