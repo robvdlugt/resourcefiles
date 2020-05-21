@@ -640,7 +640,7 @@ Window {
  
 	Timer {
 		id: animationcheckTimer
-		interval: 90000
+		interval: 300000; running: true; repeat: true
 		onTriggered: {
 			console.log("Checking remote trigger file for animations");
 			//checkforAnimation();
