@@ -597,42 +597,42 @@ Window {
 
 /////TSC animation MOD Start
  
-//	function checkforAnimation() {
-//		try {
-//			var xmlhttp = new XMLHttpRequest();
-//			xmlhttp.onreadystatechange=function() {
-//				if (xmlhttp.readyState == XMLHttpRequest.DONE) {
-//					if (xmlhttp.status == 200) {
-//							var JsonString = xmlhttp.responseText;
-//      						var JsonObject= JSON.parse(JsonString);
-//
-//							var balloonmode2 = JsonObject['balloonmode'];
-//							var animationtime2 = JsonObject['animationtime'];
-//							var animationtype2 = JsonObject['animationtype'];
-//							var visibleindimstate2 = JsonObject['visibleindimstate'];
-//	
-//							if (balloonmode2  == "Start") {
-//								balloonMode(balloonmode2, animationtime2, animationtype2, visibleindimstate2);
-//							}
-//							if (balloonmode2  == "Stop") {
-//								balloonMode("Stop");
-//							}
-//					}
-//				}
-//			}
-//			xmlhttp.open("GET", "https://raw.githubusercontent.com/ToonSoftwareCollective/toonanimations/master/trigger/triggerfile");
-//			xmlhttp.send();
-//		} catch(e) {
-//		}
-//	}
+	function checkforAnimation() {
+		try {
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange=function() {
+				if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+					if (xmlhttp.status == 200) {
+							var JsonString = xmlhttp.responseText;
+      						var JsonObject= JSON.parse(JsonString);
+
+							var balloonmode2 = JsonObject['balloonmode'];
+							var animationtime2 = JsonObject['animationtime'];
+							var animationtype2 = JsonObject['animationtype'];
+							var visibleindimstate2 = JsonObject['visibleindimstate'];
+	
+							if (balloonmode2  == "Start") {
+								balloonMode(balloonmode2, animationtime2, animationtype2, visibleindimstate2);
+							}
+							if (balloonmode2  == "Stop") {
+								balloonMode("Stop");
+							}
+					}
+				}
+			}
+			xmlhttp.open("GET", "https://raw.githubusercontent.com/ToonSoftwareCollective/toonanimations/master/trigger/triggerfile");
+			xmlhttp.send();
+		} catch(e) {
+		}
+	}
  
-//	Timer {
-//		id: animationcheckTimer
-//		interval: 300000
-//		onTriggered: {
-//			checkforAnimation();
-//		}
-//	}
+	Timer {
+		id: animationcheckTimer
+		interval: 300000
+		onTriggered: {
+			checkforAnimation();
+		}
+	}
 
 	function balloonMode(balloonmode, animationtime, animationtype, visibleindimstate) {
 		if (animationtime === undefined) animationtime = 1000
