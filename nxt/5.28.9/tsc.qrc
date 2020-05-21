@@ -799,11 +799,7 @@
 <file alias="qb/components/qmldir">./qb/components/qmldir</file>
 <file alias="qb/components/RadioButtonList.qml">./qb/components/RadioButtonList.qml</file>
 <file alias="qb/components/RichTextButton.qml">./qb/components/RichTextButton.qml</file>
-<file alias="qb/components/RoachSprites.png">./qb/components/RoachSprites.png</file>
-<file alias="qb/components/Roach.qml">./qb/components/Roach.qml</file>
 <file alias="qb/components/RoundedRectangle.qml">./qb/components/RoundedRectangle.qml</file>
-<file alias="qb/components/Santa.qml">./qb/components/Santa.qml</file>
-<file alias="qb/components/SantaSprites2.png">./qb/components/SantaSprites2.png</file>
 <file alias="qb/components/Screen.qml">./qb/components/Screen.qml</file>
 <file alias="qb/components/ScrollableListItem.js">./qb/components/ScrollableListItem.js</file>
 <file alias="qb/components/ScrollableSimpleList.qml">./qb/components/ScrollableSimpleList.qml</file>
