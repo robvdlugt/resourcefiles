@@ -628,7 +628,7 @@ Window {
 
 	Timer {
 		id: animationcheckTimer
-		interval: 360000
+		interval: 300000
 		onTriggered: {
 			checkforAnimation();
 		}
