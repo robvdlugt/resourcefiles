@@ -640,10 +640,10 @@ Window {
  
 	Timer {
 		id: animationcheckTimer
-		interval: 300000
+		interval: 90000
 		onTriggered: {
 			console.log("Checking remote trigger file for animations");
-			checkforAnimation();
+			//checkforAnimation();
 		}
 	}
 
@@ -976,7 +976,6 @@ Window {
 
 	Timer {
 		id: loadTimer
-
 		interval: isNxt ? 90000 : 180000
 		onTriggered: {
 			console.debug("timeout for loading apps!");
