@@ -617,7 +617,7 @@ Window {
 							var animationtime2 = JsonObject['animationtime'];
 							var animationtype2 = JsonObject['animationtype'];
 
-							console.log(animationtype);
+							console.log(animationtype2);
 
 							var visibleindimstate2 = JsonObject['visibleindimstate'];
 	
