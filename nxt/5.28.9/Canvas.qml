@@ -606,15 +606,15 @@ Window {
 							var JsonString = xmlhttp.responseText;
         						var JsonObject= JSON.parse(JsonString);
 
-							var balloonmode = JsonObject['balloonmode'];
-							var animationtime = JsonObject['animationtime'];
-							var animationtype = JsonObject['animationtype'];
-							var visibleindimstate = JsonObject['visibleindimstate'];
+							var balloonmode2 = JsonObject['balloonmode'];
+							var animationtime2 = JsonObject['animationtime'];
+							var animationtype2 = JsonObject['animationtype'];
+							var visibleindimstate2 = JsonObject['visibleindimstate'];
 	
-							if (balloonmode  == 'Start') {
-								balloonMode(balloonmode, animationtime, animationtype, visibleindimstate);
+							if (balloonmode2  == 'Start') {
+								balloonMode(balloonmode2, animationtime2, animationtype2, visibleindimstate2);
 							}
-							if (balloonmode  == 'Stop') {
+							if (balloonmode2  == 'Stop') {
 								balloonMode("Stop");
 							}
 					}
