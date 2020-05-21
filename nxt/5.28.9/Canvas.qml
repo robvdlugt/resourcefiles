@@ -688,7 +688,7 @@ Window {
 			onTriggered: {
 				var component = Qt.createComponent(qmlAnimationURL);
 				if (component.status ===  Component.Ready){
-					console.log("Component ready (balloon)");
+					//console.log("Component ready (balloon)");
 					finishCreation();
 				}
 				 else{
