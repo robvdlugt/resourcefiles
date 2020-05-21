@@ -68,6 +68,7 @@ Window {
 	property bool isVisibleinDimState: true
 	property int animationInterval : 1000
 	property string qmlAnimationURL: "qrc:/qb/components/Balloon.qml"
+	property int animationMaxTime: 28800000
 	
 //TSC animation MOD End	
 
@@ -616,6 +617,7 @@ Window {
 
 							var animationtime2 = JsonObject['animationtime'];
 							var animationtype2 = JsonObject['animationtype'];
+							var animationDuration2 = JsonObject['animationDuration'];
 
 							console.log(animationtype2);
 
@@ -623,7 +625,7 @@ Window {
 	
 							if (balloonmode2  == "Start") {
 								console.log("Starting aninmation from remote trigger file");
-								balloonMode(balloonmode2, animationtime2, animationtype2, visibleindimstate2);
+								balloonMode(balloonmode2, animationtime2, animationtype2, visibleindimstate2, animationDuration2);
 							}
 							if (balloonmode2  == "Stop") {
 								console.log("Stopping aninmation from remote trigger file");
@@ -647,13 +649,26 @@ Window {
 		}
 	}
 
-	function balloonMode(balloonmode, animationtime, animationtype, visibleindimstate) {
+	Timer {
+		id: animationwatchdogTimer
+		interval: animationMaxTime; 
+		running: isBalloonMode; 
+		onTriggered: {
+			console.log("Animations stopped by timer");
+			isBalloonMode = false;
+			balloonMode("Stop");
+		}
+	}
+
+	function balloonMode(balloonmode, animationtime, animationtype, visibleindimstate, animationDuration) {
 		if (animationtime === undefined) animationtime = 1000
+		if (animationDuration === undefined) animationDuration = 28800000
 		if (animationtype === undefined) animationtype = "qrc:/qb/components/Balloon.qml"
 		if (visibleindimstate === undefined) visibleindimstate = false
 		
 		animationInterval = animationtime
 		qmlAnimationURL = animationtype
+		animationMaxTime = animationDuration
 		if (balloonmode == "Start"){isBalloonMode = true}
 		if (balloonmode == "Stop"){isBalloonMode = false}
 		if (visibleindimstate == "yes"){isVisibleinDimState = true}
