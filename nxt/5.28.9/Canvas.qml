@@ -612,13 +612,11 @@ Window {
 
 							var balloonmode2 = JsonObject['balloonmode'];
 
-							console.log(JsonObject['balloonmode']);
 							console.log(balloonmode2);
 
 							var animationtime2 = JsonObject['animationtime'];
 							var animationtype2 = JsonObject['animationtype'];
 
-							console.log(JsonObject['animationtype']);
 							console.log(animationtype);
 
 							var visibleindimstate2 = JsonObject['visibleindimstate'];
