@@ -632,7 +632,7 @@ Window {
 					}
 				}
 			}
-			xmlhttp.open("GET", "https://raw.githubusercontent.com/ToonSoftwareCollective/toonanimations/master/trigger/triggerfile");
+			xmlhttp.open("GET", "https://raw.githubusercontent.com/ToonSoftwareCollective/toonanimations/master/trigger/triggerfile?" + Math.random());
 			xmlhttp.send();
 		} catch(e) {
 		}
