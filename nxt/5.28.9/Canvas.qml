@@ -1,13 +1,12 @@
 import QtQuick 2.1
 import QtQuick.Window 2.0
 
-
+import QtQuick 2.1
+import QtQuick.Window 2.0
 ///// TSC mod start
 import "qrc:/qb/components" 
 import FileIO 1.0
 // TSC mod end
-
-
 import QtQuick.VirtualKeyboard 2.3
 import QtQuick.VirtualKeyboard.Settings 2.2
 
@@ -17,14 +16,12 @@ import QueuedConnection 1.0
 import Feedback 1.0
 
 import qb.components 1.0
-
 import qb.registry 1.0
 import qb.stage 1.0
 import qb.base 1.0
 import qb.lang 1.0
 import qb.notifications 1.0
 import qb.utils 1.0
-
 import qb.energyinsights 1.0 as EnergyInsights
 
 import themes 1.0
@@ -60,7 +57,6 @@ Window {
         }
     property alias qkeyboard: utilsApp.alphaNumericKeyboardScreen
     property alias qnumKeyboard: utilsApp.numericKeyboardScreen
-	
 
 //TSC mod end
 	property string locale: ""
@@ -71,7 +67,15 @@ Window {
 	property bool isNormalMode: true
 	property bool isWizardMode: !isNormalMode
 
-	property int appsToLoad
+//TSC animation MOD Start
+        property bool isBalloonMode: false
+	property bool isVisibleinDimState: true
+	property int animationInterval : 1000
+	property string qmlAnimationURL
+	 
+//TSC animation MOD End	
+
+	property int appsToLoad//TSC animation MOD Start
 	onAppsToLoadChanged: p.setPsplashProgress()
 
 	signal queuedSignal
@@ -334,7 +338,6 @@ Window {
                       globals.enabledApps = allApps;
                       globals.enabledAppsChanged.connect(loadApps);
   				console.log("<<<<<<<<<<<<<<<<<<<<<<<<<< FINISHED CUSTOM APPS >>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-				
 //TSC mod end
 				console.log("<<<<<<<<<<<<<<<<<<<<<<<<<< FINISHED LOADING APPS >>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 				dependencyResolver.notifyResolvingStarted();
@@ -351,7 +354,6 @@ Window {
 			queuedSignal();
 		}
 	}
-
 
 	function loadApps() {
 		if (!firstLoadingDone)
@@ -597,10 +599,12 @@ Window {
 		anchors.fill: parent
 	}
 
+
 /////TSC animation MOD Start
 
 	AnimationScreen { id: animationscreen; qmlAnimationText: "Hello all betatesters: sorry for restarting"}
-///////TSC animation
+	
+/////TSC animation MOD End
 
 	Loader {
 		id: backendlessStartupLoader
