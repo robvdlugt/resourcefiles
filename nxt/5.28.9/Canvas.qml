@@ -594,6 +594,11 @@ Window {
 		source: "qrc:/qb/components/AnimationScreen.qml"
 	}
 	
+	Component {
+		id: animationScreenComp
+		AnimationScreen {}
+	}
+	
 ///////TSC animation
 
 	Loader {
