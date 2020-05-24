@@ -11,6 +11,26 @@ Widget {
 	property bool isVisibleinDimState: true
 	property int animationInterval : 1000
 	property string qmlAnimationURL
+	property string qmlAnimationText: "hello test 123"
+	
+	Rectangle {
+		id: spriteText
+		color: !dimState? "white" : "black"
+		anchors.fill: parent 
+		radius: 4
+     		Text{
+         		id: buttonLabel
+         		anchors.centerIn: parent
+			width: parent.width
+			font.pixelSize:  isNxt ? 30 : 22
+			font.family: qfont.regular.name
+			font.bold: true
+			color: !dimState? "black" : "white"
+			wrapMode: Text.WordWrap
+         		text: qmlAnimationText
+     		}
+		
+	}
 
 	Rectangle {
         	id: balloonScreen
