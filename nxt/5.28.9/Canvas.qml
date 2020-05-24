@@ -12,7 +12,7 @@ import QueuedConnection 1.0
 import Feedback 1.0
 
 import qb.components 1.0
-import "qrc:/qb/components/AnimationScreen.qml"
+import "qrc:/qb/components"
 import qb.registry 1.0
 import qb.stage 1.0
 import qb.base 1.0
