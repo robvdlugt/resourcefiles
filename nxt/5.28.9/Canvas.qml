@@ -595,8 +595,6 @@ Window {
 		anchors.fill: parent
 	}
 
-
-
 	Loader {
 		id: backendlessStartupLoader
 		anchors.fill: parent
