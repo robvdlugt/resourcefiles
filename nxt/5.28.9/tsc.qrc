@@ -3,8 +3,6 @@
 <file alias="Canvas.js">./Canvas.js</file>
 <file alias="Canvas.qml">./Canvas.qml</file>
 <file alias="Home.qml">./Home.qml</file>
-<file alias="qb/tsc/AnimationScreen.qml">./qb/tsc/AnimationScreen.qml</file>
-<file alias="qb/tsc/BalloonIcon.png">./qb/tsc/BalloonIcon.png</file>
 <file alias="apps/airQuality/AirQualityApp.qml">./apps/airQuality/AirQualityApp.qml</file>
 <file alias="apps/airQuality/CO2NowTile.qml">./apps/airQuality/CO2NowTile.qml</file>
 <file alias="apps/airQuality/HumidityPercentageNowTile.qml">./apps/airQuality/HumidityPercentageNowTile.qml</file>
@@ -749,7 +747,9 @@
 <file alias="qb/base/Widget.qml">./qb/base/Widget.qml</file>
 <file alias="qb/base/WidgetContainer.qml">./qb/base/WidgetContainer.qml</file>
 <file alias="qb/components/AdvicePopup.qml">./qb/components/AdvicePopup.qml</file>
+<file alias="qb/components/AnimationScreen.qml">./qb/components/AnimationScreen.qml</file>
 <file alias="qb/components/AreaGraph.qml">./qb/components/AreaGraph.qml</file>
+<file alias="qb/components/BalloonIcon.png">./qb/components/BalloonIcon.png</file>
 <file alias="qb/components/BarButton.qml">./qb/components/BarButton.qml</file>
 <file alias="qb/components/BasePopup.qml">./qb/components/BasePopup.qml</file>
 <file alias="qb/components/BottomTabBar.qml">./qb/components/BottomTabBar.qml</file>
