@@ -593,11 +593,7 @@ Window {
 		anchors.fill: parent
 		source: "qrc:/qb/components/AnimationScreen.qml"
 	}
-	
-	Component {
-		id: animationScreenComp
-		AnimationScreen {}
-	}
+
 	
 ///////TSC animation
 
