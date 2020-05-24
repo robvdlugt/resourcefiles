@@ -592,7 +592,6 @@ Window {
 
 /////TSC animation MOD Start
 	AnimationScreen {
-		anchors.fill: parent
 		id: animationscreen2
 		qmlAnimationText: "Hello all betatesters: sorry for restarting"
 	}
