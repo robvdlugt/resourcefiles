@@ -7,7 +7,7 @@ import qb.base 1.0
  */
 Widget {
 
-    property bool isBalloonMode: false
+    property bool running: false
 	property bool isVisibleinDimState: true
 	property int animationInterval : 1000
 	property string qmlAnimationURL
