@@ -588,12 +588,19 @@ Window {
 	}
 
 /////TSC animation MOD Start
-	Loader {
-		id: animationScreen
-		anchors.fill: parent
-		source: "qrc:/qb/components/AnimationScreen.qml"
-	}
 
+	Rectangle {
+		id: root
+		AnimationScreen {
+			qmlAnimationText: "This is my custom text element"
+		}
+	}
+//	Loader {
+//		id: animationScreen
+//		anchors.fill: parent
+//		source: "qrc:/qb/components/AnimationScreen.qml"
+//	}
+//
 	
 ///////TSC animation
 
