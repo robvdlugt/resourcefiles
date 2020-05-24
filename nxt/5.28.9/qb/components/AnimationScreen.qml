@@ -11,7 +11,7 @@ Widget {
 	property bool isVisibleinDimState: true
 	property int animationInterval : 1000
 	property string qmlAnimationURL
-	property string qmlAnimationText : "Animation Test for beta testing"
+	property string qmlAnimationText : "Animation Mode"
 	
 
 	Rectangle {
@@ -22,13 +22,17 @@ Widget {
 		radius: 4
      		Text{
          		id: buttonLabel
-         		anchors.centerIn: parent
-			width: parent.width
-			font.pixelSize:  isNxt ? 30 : 22
-			font.family: qfont.regular.name
-			font.bold: true
-			color: !dimState? "black" : "white"
-			wrapMode: Text.WordWrap
+         		anchors{
+					top: parent.top
+					topMargin: 2
+					horizontalCenter: parent.horizontalCenter
+				}
+				width: parent.width
+				font.pixelSize:  isNxt ? 30 : 22
+				font.family: qfont.regular.name
+				font.bold: true
+				color: !dimState? "black" : "white"
+				wrapMode: Text.WordWrap
          		text: qmlAnimationText
      		}
      }
@@ -43,7 +47,7 @@ Widget {
 			interval : animationInterval
 			repeat: true
 			triggeredOnStart: true
-			running: runninge
+			running: running
 			onTriggered: {
 				var component = Qt.createComponent(qmlAnimationURL);
 				if (component.status ===  Component.Ready){
