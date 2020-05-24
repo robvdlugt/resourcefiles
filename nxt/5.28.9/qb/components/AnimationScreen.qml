@@ -15,7 +15,7 @@ Widget {
 	
 
 	Rectangle {
-		id: spriteImage
+		id: someText
 		color: "transparent"
 		anchors.fill: parent 
 		radius: 4
