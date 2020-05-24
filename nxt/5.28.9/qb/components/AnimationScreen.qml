@@ -11,20 +11,27 @@ Widget {
 	property bool isVisibleinDimState: true
 	property int animationInterval : 1000
 	property string qmlAnimationURL
+	property string qmlAnimationText : "Animation Test for beta testing"
+	
 
+	Rectangle {
+		id: spriteImage
+		color: !dimState? "white" : "black"
+		anchors.fill: parent 
+		radius: 4
+     		Text{
+         		id: buttonLabel
+         		anchors.centerIn: parent
+			width: parent.width
+			font.pixelSize:  isNxt ? 30 : 22
+			font.family: qfont.regular.name
+			font.bold: true
+			color: !dimState? "black" : "white"
+			wrapMode: Text.WordWrap
+         		text: qmlAnimationText
+     		}
+     }
 
-
-	function balloonMode(balloonmode, animationtime, animationtype, visibleindimstate, animationDuration) {
-		if (animationtime === undefined) animationtime = 1000
-		if (visibleindimstate === undefined) visibleindimstate = false
-		animationInterval = animationtime
-		qmlAnimationURL = animationtype
-		animationMaxTime = animationDuration
-		if ((balloonmode == "Start")&&(animationtype != undefined)){isBalloonMode = true}
-		if ((balloonmode == "Stop")||(animationtype === undefined)){isBalloonMode = false}
-		if (visibleindimstate == "yes"){isVisibleinDimState = true}
-		if (visibleindimstate == "no"){isVisibleinDimState = false}
-	}
 
 	Rectangle {
         	id: balloonScreen
