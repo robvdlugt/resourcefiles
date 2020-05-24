@@ -12,7 +12,9 @@ import QueuedConnection 1.0
 import Feedback 1.0
 
 import qb.components 1.0
+
 import "qrc:/qb/components"
+
 import qb.registry 1.0
 import qb.stage 1.0
 import qb.base 1.0
@@ -590,18 +592,11 @@ Window {
 
 /////TSC animation MOD Start
 
-	Rectangle {
-		id: root
-		AnimationScreen {
+	AnimationScreen {
+		id: animationscreen2
 			qmlAnimationText: "This is my custom text element"
-		}
 	}
-//	Loader {
-//		id: animationScreen
-//		anchors.fill: parent
-//		source: "qrc:/qb/components/AnimationScreen.qml"
-//	}
-//
+
 	
 ///////TSC animation
 
