@@ -6,6 +6,8 @@ import QtQuick.Window 2.0
 import "qrc:/qb/components" 
 import FileIO 1.0
 // TSC mod end
+
+
 import QtQuick.VirtualKeyboard 2.3
 import QtQuick.VirtualKeyboard.Settings 2.2
 
@@ -17,6 +19,7 @@ import Feedback 1.0
 import qb.components 1.0
 
 import qb.registry 1.0
+import qb.stage 1.0
 import qb.base 1.0
 import qb.lang 1.0
 import qb.notifications 1.0
