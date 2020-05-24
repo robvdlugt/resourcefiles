@@ -17,9 +17,8 @@ Widget {
 	Rectangle {
 		id: someText
 		color: "transparent"
-		width: 1024
-		height: 800
-		//anchors.fill: parent 
+		width: isNxt? 1024 : 800
+		height: isNxt? 600 : 480
 		radius: 4
      		Text{
          		id: buttonLabel
@@ -38,14 +37,13 @@ Widget {
 	Rectangle {
         	id: balloonScreen
         	color: "transparent"
-        	//anchors.fill: parent
-			width: 1024
-		    height: 800
+        width: isNxt? 1024 : 800
+		height: isNxt? 600 : 480
 		Timer {
 			interval : animationInterval
 			repeat: true
 			triggeredOnStart: true
-			running: isBalloonMode
+			running: runninge
 			onTriggered: {
 				var component = Qt.createComponent(qmlAnimationURL);
 				if (component.status ===  Component.Ready){
