@@ -591,7 +591,6 @@ Window {
 	Loader {
 		id: animationScreen
 		anchors.fill: parent
-		qmlAnimationText:"hello"
 		source: "qrc:/qb/components/AnimationScreen.qml"
 	}
 	
