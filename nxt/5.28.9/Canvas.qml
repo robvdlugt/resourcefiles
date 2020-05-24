@@ -67,15 +67,8 @@ Window {
 	property bool isNormalMode: true
 	property bool isWizardMode: !isNormalMode
 
-//TSC animation MOD Start
-        property bool isBalloonMode: false
-	property bool isVisibleinDimState: true
-	property int animationInterval : 1000
-	property string qmlAnimationURL
-	 
-//TSC animation MOD End	
 
-	property int appsToLoad//TSC animation MOD Start
+	property int appsToLoad
 	onAppsToLoadChanged: p.setPsplashProgress()
 
 	signal queuedSignal
