@@ -1,8 +1,10 @@
 import QtQuick 2.1
 import QtQuick.Window 2.0
-// TSC mod start
-//import "qrc:/qb/components/tsc" 
-import "qrc:/qb/components/tsc" 
+//////////////////////////////////////////////// TSC mod start
+//////////////////////////////////////////////import "qrc:/qb/components/tsc" 
+////////////////////////////////import "qrc:/qb/components/tsc" 
+import qb.tsc 1.0
+
 import FileIO 1.0
 // TSC mod end
 import QtQuick.VirtualKeyboard 2.3
@@ -21,6 +23,9 @@ import qb.base 1.0
 import qb.lang 1.0
 import qb.notifications 1.0
 import qb.utils 1.0
+
+
+
 import qb.energyinsights 1.0 as EnergyInsights
 
 import themes 1.0

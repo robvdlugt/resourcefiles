@@ -1,2 +1,2 @@
-module qb.components.tsc
+module qb.tsc
 AnimationScreen 1.0 AnimationScreen.qml
