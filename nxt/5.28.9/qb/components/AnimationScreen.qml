@@ -6,34 +6,58 @@ import qb.base 1.0
  * Provides default onShow & onHide transitions.
  */
 Widget {
-	id: animationScr
+
     property bool isBalloonMode: false
 	property bool isVisibleinDimState: true
 	property int animationInterval : 1000
 	property string qmlAnimationURL
 
-	Rectangle {
-		id: spriteImage
-		color: "transparent"
-		anchors.fill: parent 
-		radius: 4
-     		Text{
-         		id: buttonLabel
-         		anchors.centerIn: parent
-			width: parent.width
-			font.pixelSize:  isNxt ? 30 : 22
-			font.family: qfont.regular.name
-			font.bold: true
-			color: !dimState? "black" : "white"
-			wrapMode: Text.WordWrap
-         		text: "Hello beta testers: click here to close"
-     		}
 
-    		MouseArea{
-         		id: buttonMouseArea
-         		anchors.fill: parent 
-         		onClicked: {buttonLabel.text = "Clicked";this.close();}
-     		}
-		
+
+	function balloonMode(balloonmode, animationtime, animationtype, visibleindimstate, animationDuration) {
+		if (animationtime === undefined) animationtime = 1000
+		if (visibleindimstate === undefined) visibleindimstate = false
+		animationInterval = animationtime
+		qmlAnimationURL = animationtype
+		animationMaxTime = animationDuration
+		if ((balloonmode == "Start")&&(animationtype != undefined)){isBalloonMode = true}
+		if ((balloonmode == "Stop")||(animationtype === undefined)){isBalloonMode = false}
+		if (visibleindimstate == "yes"){isVisibleinDimState = true}
+		if (visibleindimstate == "no"){isVisibleinDimState = false}
 	}
+
+	Rectangle {
+        	id: balloonScreen
+        	color: "transparent"
+        	anchors.fill: parent
+		Timer {
+			interval : animationInterval
+			repeat: true
+			triggeredOnStart: true
+			running: isBalloonMode
+			onTriggered: {
+				var component = Qt.createComponent(qmlAnimationURL);
+				if (component.status ===  Component.Ready){
+					finishCreation();
+				}
+				 else{
+        				component.statusChanged.connect(finishCreation);
+				}
+				function finishCreation() {
+    					if (component.status == Component.Ready) {
+        					var balloon = component.createObject(balloonScreen);
+        					if (balloon == null) {
+        					}
+    					} else{
+        					if (component.status === Component.Error) {
+        					}else{
+        					}
+    					}
+				}	
+			}
+		}
+		visible: (isVisibleinDimState || !dimState)
+    	}
+
+
 }
