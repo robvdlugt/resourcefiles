@@ -56,9 +56,6 @@ Window {
     property alias qkeyboard: utilsApp.alphaNumericKeyboardScreen
     property alias qnumKeyboard: utilsApp.numericKeyboardScreen
 	
-	/////TSC animation MOD Start
-		AnimationScreen { id: animationscreen}
-	///////TSC animation
 
 //TSC mod end
 	property string locale: ""
@@ -332,6 +329,7 @@ Window {
                       globals.enabledApps = allApps;
                       globals.enabledAppsChanged.connect(loadApps);
   				console.log("<<<<<<<<<<<<<<<<<<<<<<<<<< FINISHED CUSTOM APPS >>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+				
 //TSC mod end
 				console.log("<<<<<<<<<<<<<<<<<<<<<<<<<< FINISHED LOADING APPS >>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 				dependencyResolver.notifyResolvingStarted();
@@ -348,6 +346,10 @@ Window {
 			queuedSignal();
 		}
 	}
+
+/////TSC animation MOD Start
+		AnimationScreen { id: animationscreen}
+///////TSC animation
 
 	function loadApps() {
 		if (!firstLoadingDone)
