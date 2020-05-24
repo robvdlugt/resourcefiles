@@ -596,8 +596,8 @@ Window {
 		id: animation1
 		AnimationScreen {}
 	}
-		Loader {
-		id: AnimationScreen
+	Loader {
+		id: animationScreen
 		anchors.fill: parent
 		source: "AnimationScreen.qml"
 	}
