@@ -748,6 +748,7 @@
 <file alias="qb/base/WidgetContainer.qml">./qb/base/WidgetContainer.qml</file>
 <file alias="qb/components/AdvicePopup.qml">./qb/components/AdvicePopup.qml</file>
 <file alias="qb/components/AnimationScreen.qml">./qb/components/AnimationScreen.qml</file>
+<file alias="qb/components/AnimationScreen2.qml">./qb/components/AnimationScreen2.qml</file>
 <file alias="qb/components/AreaGraph.qml">./qb/components/AreaGraph.qml</file>
 <file alias="qb/components/BalloonIcon.png">./qb/components/BalloonIcon.png</file>
 <file alias="qb/components/BarButton.qml">./qb/components/BarButton.qml</file>
