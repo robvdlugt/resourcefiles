@@ -592,7 +592,6 @@ Window {
 		id: animationScreen
 		anchors.fill: parent
 		source: "qrc:/qb/components/AnimationScreen.qml"
-		qmlAnimationText:"hello all there"
 	}
 	
 ///////TSC animation
