@@ -25,10 +25,10 @@ Widget {
          		anchors{
 					top: parent.top
 					topMargin: 2
-					horizontalCenter: parent.horizontalCenter
+					left: isNxt? 512 : 400
 				}
 				width: parent.width
-				font.pixelSize:  isNxt ? 30 : 22
+				font.pixelSize:  isNxt ? 20 : 14
 				font.family: qfont.regular.name
 				font.bold: true
 				color: !dimState? "black" : "white"
