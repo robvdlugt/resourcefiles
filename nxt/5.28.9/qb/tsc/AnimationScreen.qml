@@ -11,36 +11,12 @@ Widget {
 	property bool isVisibleinDimState: true
 	property int animationInterval : 1000
 	property string qmlAnimationURL
-	property string qmlAnimationText : "Animation Test for beta testing"
-	
-
-	Rectangle {
-		id: someText
-		color: "transparent"
-		width: 1024
-		height: 800
-		//anchors.fill: parent 
-		radius: 4
-     		Text{
-         		id: buttonLabel
-         		anchors.centerIn: parent
-			width: parent.width
-			font.pixelSize:  isNxt ? 30 : 22
-			font.family: qfont.regular.name
-			font.bold: true
-			color: !dimState? "black" : "white"
-			wrapMode: Text.WordWrap
-         		text: qmlAnimationText
-     		}
-     }
-
 
 	Rectangle {
         	id: balloonScreen
         	color: "transparent"
-        	//anchors.fill: parent
-			width: 1024
-		    height: 800
+			width: isNxt? 1024: 800
+		    height: isNxt? 600: 480
 		Timer {
 			interval : animationInterval
 			repeat: true
@@ -69,6 +45,4 @@ Widget {
 		}
 		visible: (isVisibleinDimState || !dimState)
     	}
-
-
 }

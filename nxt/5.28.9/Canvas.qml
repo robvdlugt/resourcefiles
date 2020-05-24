@@ -1,6 +1,7 @@
 import QtQuick 2.1
 import QtQuick.Window 2.0
 // TSC mod start
+import "qrc:/qb/tsc"
 import FileIO 1.0
 // TSC mod end
 import QtQuick.VirtualKeyboard 2.3
@@ -12,8 +13,6 @@ import QueuedConnection 1.0
 import Feedback 1.0
 
 import qb.components 1.0
-
-import "qrc:/qb/components"
 
 import qb.registry 1.0
 import qb.stage 1.0
@@ -56,6 +55,10 @@ Window {
         }
     property alias qkeyboard: utilsApp.alphaNumericKeyboardScreen
     property alias qnumKeyboard: utilsApp.numericKeyboardScreen
+	
+	/////TSC animation MOD Start
+		AnimationScreen { id: animationscreen}
+	///////TSC animation
 
 //TSC mod end
 	property string locale: ""
@@ -590,9 +593,7 @@ Window {
 		anchors.fill: parent
 	}
 
-/////TSC animation MOD Start
-	AnimationScreen { id: animationscreen; qmlAnimationText: "Hello all betatesters: sorry for restarting"}
-///////TSC animation
+
 
 	Loader {
 		id: backendlessStartupLoader
