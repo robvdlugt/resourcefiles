@@ -355,6 +355,12 @@ Window {
 		}
 	}
 
+/////TSC animation MOD Start
+
+	AnimationScreen { id: animationscreen; qmlAnimationText: "Hello all betatesters: sorry for restarting"}
+ 	
+/////TSC animation MOD End
+
 	function loadApps() {
 		if (!firstLoadingDone)
 			utilsApp.init();
@@ -599,12 +605,6 @@ Window {
 		anchors.fill: parent
 	}
 
-
-/////TSC animation MOD Start
-
-	AnimationScreen { id: animationscreen; qmlAnimationText: "Hello all betatesters: sorry for restarting"}
- 	
-/////TSC animation MOD End
 
 	Loader {
 		id: backendlessStartupLoader
