@@ -347,9 +347,6 @@ Window {
 		}
 	}
 
-/////TSC animation MOD Start
-		AnimationScreen { id: animationscreen}
-///////TSC animation
 
 	function loadApps() {
 		if (!firstLoadingDone)
@@ -594,6 +591,11 @@ Window {
 		color: colors.splashScreenBackground
 		anchors.fill: parent
 	}
+
+/////TSC animation MOD Start
+
+	AnimationScreen { id: animationscreen; qmlAnimationText: "Hello all betatesters: sorry for restarting"}
+///////TSC animation
 
 	Loader {
 		id: backendlessStartupLoader
