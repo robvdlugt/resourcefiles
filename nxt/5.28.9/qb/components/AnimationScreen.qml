@@ -15,8 +15,9 @@ Widget {
 	
 	Rectangle {
 		id: spriteText
-		color: !dimState? "white" : "black"
-		anchors.fill: parent 
+		color: "transparent"
+		width: 1024
+		height:  600
 		radius: 4
      		Text{
          		id: buttonLabel
@@ -35,8 +36,8 @@ Widget {
 	Rectangle {
         	id: balloonScreen
         	color: "transparent"
-			width: isNxt? 1024: 800
-		    height: isNxt? 600: 480
+			width: 1024
+		    height:  600
 		Timer {
 			interval : animationInterval
 			repeat: true
