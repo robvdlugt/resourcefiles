@@ -1,4 +1,5 @@
 module qb.components
+AnimationScreen 1.0 AnimationScreen.qml
 AreaGraph 1.0 AreaGraph.qml
 CategoryListItem 1.0 CategoryListItem.qml
 DashedLine 1.0 DashedLine.qml
