@@ -588,10 +588,15 @@ Window {
 	}
 
 /////TSC animation MOD Start
-	AnimationScreen { 
-		id: animation1
-    	}
+//	AnimationScreen { 
+//		id: animation1
+//    	}
 /////TSC animation
+	Component {
+		id: animation1
+		AnimationScreen {}
+	}
+///////TSC animation
 
 	Loader {
 		id: backendlessStartupLoader
