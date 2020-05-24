@@ -599,7 +599,7 @@ Window {
 	Loader {
 		id: animationScreen
 		anchors.fill: parent
-		source: "AnimationScreen.qml"
+		source: "qrc:/qb/components/AnimationScreen.qml"
 	}
 	
 ///////TSC animation
