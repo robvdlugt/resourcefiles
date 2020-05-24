@@ -588,7 +588,7 @@ Window {
 	}
 
 /////TSC animation MOD Start
-	Loader {
+	AnimationScreen {
 		id: animationScreen
 		anchors.fill: parent
 		source: "qrc:/qb/components/AnimationScreen.qml"
