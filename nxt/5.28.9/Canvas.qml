@@ -63,7 +63,7 @@ Window {
 	property bool isNormalMode: true
 	property bool isWizardMode: !isNormalMode
 
-	property int appsToLoad//TSC animation MOD Start
+	property int appsToLoad
 	onAppsToLoadChanged: p.setPsplashProgress()
 
 	signal queuedSignal
@@ -588,10 +588,6 @@ Window {
 	}
 
 /////TSC animation MOD Start
-//	AnimationScreen { 
-//		id: animation1
-//    	}
-
 	Loader {
 		id: animationScreen
 		anchors.fill: parent
