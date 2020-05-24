@@ -591,11 +591,7 @@ Window {
 	}
 
 /////TSC animation MOD Start
-	AnimationScreen {
-		id: animationscreen2
-		qmlAnimationText: "Hello all betatesters: sorry for restarting"
-	}
-	
+	AnimationScreen { id: animationscreen; qmlAnimationText: "Hello all betatesters: sorry for restarting"}
 ///////TSC animation
 
 	Loader {
