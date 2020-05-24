@@ -588,12 +588,23 @@ Window {
 	}
 
 /////TSC animation MOD Start
-	AnimationScreen {
-		id: animationScreen
-		anchors.fill: parent
-		//source: "qrc:/qb/components/AnimationScreen.qml"
+//	AnimationScreen {
+//		id: animationScreen
+//		anchors.fill: parent
+//		//source: "qrc:/qb/components/AnimationScreen.qml"
+//	}
+
+
+	Component {
+		id: animationComp
+		AnimationScreen {}
 	}
 
+	Loader {
+		id: animationOverlay
+		anchors.fill: parent
+		sourceComponent: animationComp
+	}
 	
 ///////TSC animation
 
