@@ -334,6 +334,7 @@
 <file alias="tsc/DimFogNight.png">./../../../tsc-images/DimFogNight.png</file>
 <file alias="tsc/shuffle.png">./../../../tsc-images/shuffle.png</file>
 <file alias="tsc/volume_down_small.png">./../../../tsc-images/volume_down_small.png</file>
+<file alias="tsc/BalloonIcon.png">./../../../tsc-images/BalloonIcon.png</file>
 <file alias="qb/tsc/AnimationScreen.qml">./qb/tsc/AnimationScreen.qml</file>
 <file alias="apps/tscSettings/TscSettingsApp.qml">./../../../tscSettings/TscSettingsApp.qml</file>
 <file alias="apps/tscSettings/TscFrame.qml">./../../../tscSettings/TscFrame.qml</file>
