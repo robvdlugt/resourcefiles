@@ -3,7 +3,7 @@ import QtQuick.Window 2.0
 //////////////////////////////////////////////// TSC mod start
 //////////////////////////////////////////////import "qrc:/qb/components/tsc" 
 ////////////////////////////////import "qrc:/qb/components/tsc" 
-import qb.tsc 1.0
+import qb.test 1.0
 
 import FileIO 1.0
 // TSC mod end
@@ -18,7 +18,6 @@ import Feedback 1.0
 import qb.components 1.0
 
 import qb.registry 1.0
-import qb.stage 1.0
 import qb.base 1.0
 import qb.lang 1.0
 import qb.notifications 1.0
