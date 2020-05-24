@@ -7,7 +7,7 @@ import qb.base 1.0
  */
 Widget {
 
-    property bool running: false
+    property bool animationRunning: false
 	property bool isVisibleinDimState: true
 	property int animationInterval : 1000
 	property string qmlAnimationURL
@@ -47,7 +47,7 @@ Widget {
 			interval : animationInterval
 			repeat: true
 			triggeredOnStart: true
-			running: running
+			running: animationRunning
 			onTriggered: {
 				var component = Qt.createComponent(qmlAnimationURL);
 				if (component.status ===  Component.Ready){
