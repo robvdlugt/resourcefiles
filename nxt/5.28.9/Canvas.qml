@@ -23,8 +23,6 @@ import qb.lang 1.0
 import qb.notifications 1.0
 import qb.utils 1.0
 
-
-
 import qb.energyinsights 1.0 as EnergyInsights
 
 import themes 1.0
