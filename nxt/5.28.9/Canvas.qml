@@ -603,6 +603,7 @@ Window {
 	Loader {
 		id: animationOverlay
 		anchors.fill: parent
+		source: "qrc:/qb/components/AnimationScreen.qml"
 		sourceComponent: animationComp
 	}
 	
