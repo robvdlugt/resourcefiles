@@ -25,7 +25,7 @@ Widget {
          		anchors{
 					top: parent.top
 					topMargin: 2
-					left: isNxt? 512 : 400
+					left: isNxt ? 512 : 400
 				}
 				width: parent.width
 				font.pixelSize:  isNxt ? 20 : 14
