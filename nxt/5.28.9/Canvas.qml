@@ -67,8 +67,7 @@ Window {
         property bool isBalloonMode: false
 	property bool isVisibleinDimState: true
 	property int animationInterval : 1000
-	property string qmlAnimationURL: "qrc:/qb/components/Balloon.qml"
-	property int animationMaxTime: 28800000
+	property string qmlAnimationURL
 	 
 //TSC animation MOD End	
 
@@ -597,81 +596,15 @@ Window {
 	}
 
 /////TSC animation MOD Start
- 
-	function checkforAnimation() {
-		try {
-			var xmlhttp = new XMLHttpRequest();
-			console.log("Request remote trigger file for animations");
-			xmlhttp.onreadystatechange=function() {
-				if (xmlhttp.readyState == XMLHttpRequest.DONE) {
-					console.log("Request remote trigger file for animations DONE");
-					if (xmlhttp.status == 200) {
-							console.log("Request remote trigger file for animations status=200");
-							var JsonString = xmlhttp.responseText;
-							console.log(JsonString);
-      						        var JsonObject= JSON.parse(JsonString);
-
-							var balloonmode2 = JsonObject['balloonmode'];
-
-							console.log(balloonmode2);
-
-							var animationtime2 = JsonObject['animationtime'];
-							var animationtype2 = JsonObject['animationtype'];
-							var animationDuration2 = JsonObject['animationDuration'];
-
-							console.log(animationtype2);
-
-							var visibleindimstate2 = JsonObject['visibleindimstate'];
-	
-							if (balloonmode2  == "Start") {
-								console.log("Starting aninmation from remote trigger file");
-								balloonMode(balloonmode2, animationtime2, animationtype2, visibleindimstate2, animationDuration2);
-							}
-							if (balloonmode2  == "Stop") {
-								console.log("Stopping aninmation from remote trigger file");
-								balloonMode("Stop");
-							}
-					}
-				}
-			}
-			xmlhttp.open("GET", "https://raw.githubusercontent.com/ToonSoftwareCollective/toonanimations/master/trigger/triggerfile?" + Math.random());
-			xmlhttp.send();
-		} catch(e) {
-		}
-	}
- 
-	Timer {
-		id: animationcheckTimer
-		interval: 300000; running: true; repeat: true
-		onTriggered: {
-			console.log("Checking remote trigger file for animations");
-			checkforAnimation();
-		}
-	}
-
-	Timer {
-		id: animationwatchdogTimer
-		interval: animationMaxTime 
-		running: isBalloonMode
-		triggeredOnStart:false
-		onTriggered: {
-			console.log("Animations stopped by timer");
-			isBalloonMode = false;
-			balloonMode("Stop");
-		}
-	}
 
 	function balloonMode(balloonmode, animationtime, animationtype, visibleindimstate, animationDuration) {
 		if (animationtime === undefined) animationtime = 1000
-		if (animationDuration === undefined) animationDuration = 28800000
-		if (animationtype === undefined) animationtype = "qrc:/qb/components/Balloon.qml"
 		if (visibleindimstate === undefined) visibleindimstate = false
-		
 		animationInterval = animationtime
 		qmlAnimationURL = animationtype
 		animationMaxTime = animationDuration
-		if (balloonmode == "Start"){isBalloonMode = true}
-		if (balloonmode == "Stop"){isBalloonMode = false}
+		if ((balloonmode == "Start")&&(animationtype != undefined)){isBalloonMode = true}
+		if ((balloonmode == "Stop")||(animationtype === undefined)){isBalloonMode = false}
 		if (visibleindimstate == "yes"){isVisibleinDimState = true}
 		if (visibleindimstate == "no"){isVisibleinDimState = false}
 	}
@@ -688,7 +621,6 @@ Window {
 			onTriggered: {
 				var component = Qt.createComponent(qmlAnimationURL);
 				if (component.status ===  Component.Ready){
-					//console.log("Component ready (balloon)");
 					finishCreation();
 				}
 				 else{
@@ -697,15 +629,11 @@ Window {
 				function finishCreation() {
     					if (component.status == Component.Ready) {
         					var balloon = component.createObject(balloonScreen);
-						console.log("Creating balloon");
         					if (balloon == null) {
-            						console.log("Error creating object");
         					}
     					} else{
         					if (component.status === Component.Error) {
-        						console.log("Error loading component:", component.errorString());
         					}else{
-            						console.log("Component status changed:", component.status);
         					}
     					}
 				}	
