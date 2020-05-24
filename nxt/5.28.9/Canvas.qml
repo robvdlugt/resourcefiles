@@ -591,11 +591,7 @@ Window {
 //	AnimationScreen { 
 //		id: animation1
 //    	}
-/////TSC animation
-	Component {
-		id: animation1
-		AnimationScreen {}
-	}
+
 	Loader {
 		id: animationScreen
 		anchors.fill: parent
