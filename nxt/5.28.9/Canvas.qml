@@ -596,6 +596,12 @@ Window {
 		id: animation1
 		AnimationScreen {}
 	}
+		Loader {
+		id: AnimationScreen
+		anchors.fill: parent
+		source: "AnimationScreen.qml"
+	}
+	
 ///////TSC animation
 
 	Loader {
