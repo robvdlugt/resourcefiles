@@ -591,7 +591,7 @@ Window {
 	AnimationScreen {
 		id: animationScreen
 		anchors.fill: parent
-		source: "qrc:/qb/components/AnimationScreen.qml"
+		//source: "qrc:/qb/components/AnimationScreen.qml"
 	}
 
 	
