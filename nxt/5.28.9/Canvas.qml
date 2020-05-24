@@ -591,15 +591,11 @@ Window {
 	}
 
 /////TSC animation MOD Start
-Rectangle {
-	id: transpqrentRectangle
-	color: "transparent"
-	anchors.fill: parent
 	AnimationScreen {
+		anchors.fill: parent
 		id: animationscreen2
-			qmlAnimationText: "This is my custom text element"
+		qmlAnimationText: "Hello all betatesters: sorry for restarting"
 	}
-}
 	
 ///////TSC animation
 
