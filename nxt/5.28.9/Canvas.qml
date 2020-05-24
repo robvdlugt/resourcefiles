@@ -355,11 +355,6 @@ Window {
 		}
 	}
 
-/////TSC animation MOD Start
-
-	AnimationScreen { id: animationscreen; qmlAnimationText: "Hello all betatesters: sorry for restarting"}
- 	
-/////TSC animation MOD End
 
 	function loadApps() {
 		if (!firstLoadingDone)
@@ -598,6 +593,13 @@ Window {
 		anchors.fill: parent
 		sourceComponent: locale && parentalControl.enabled ? parentalControlOverlayComp : undefined
 	}
+
+
+
+/////TSC animation MOD Start
+	AnimationScreen { id: animationscreen; qmlAnimationText: "D"}
+/////TSC animation MOD End
+
 
 	Rectangle {
 		id: splashScreenBackground
