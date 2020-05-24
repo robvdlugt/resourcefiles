@@ -334,6 +334,7 @@
 <file alias="tsc/DimFogNight.png">./../../../tsc-images/DimFogNight.png</file>
 <file alias="tsc/shuffle.png">./../../../tsc-images/shuffle.png</file>
 <file alias="tsc/volume_down_small.png">./../../../tsc-images/volume_down_small.png</file>
+<file alias="qb/tsc/AnimationScreen.qml">./qb/tsc/AnimationScreen.qml</file>
 <file alias="apps/tscSettings/TscSettingsApp.qml">./../../../tscSettings/TscSettingsApp.qml</file>
 <file alias="apps/tscSettings/TscFrame.qml">./../../../tscSettings/TscFrame.qml</file>
 <file alias="apps/tscSettings/HideToonLogoScreen.qml">./../../../tscSettings/HideToonLogoScreen.qml</file>
@@ -747,9 +748,7 @@
 <file alias="qb/base/Widget.qml">./qb/base/Widget.qml</file>
 <file alias="qb/base/WidgetContainer.qml">./qb/base/WidgetContainer.qml</file>
 <file alias="qb/components/AdvicePopup.qml">./qb/components/AdvicePopup.qml</file>
-<file alias="qb/components/AnimationScreen.qml">./qb/components/AnimationScreen.qml</file>
 <file alias="qb/components/AreaGraph.qml">./qb/components/AreaGraph.qml</file>
-<file alias="qb/components/BalloonIcon.png">./qb/components/BalloonIcon.png</file>
 <file alias="qb/components/BarButton.qml">./qb/components/BarButton.qml</file>
 <file alias="qb/components/BasePopup.qml">./qb/components/BasePopup.qml</file>
 <file alias="qb/components/BottomTabBar.qml">./qb/components/BottomTabBar.qml</file>
