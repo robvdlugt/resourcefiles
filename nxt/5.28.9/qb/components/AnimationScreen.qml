@@ -17,8 +17,8 @@ Widget {
 	Rectangle {
 		id: someText
 		color: "transparent"
-		width: Screen.width
-		height: Screen.height
+		width: 1024
+		height: 800
 		//anchors.fill: parent 
 		radius: 4
      		Text{
@@ -39,8 +39,8 @@ Widget {
         	id: balloonScreen
         	color: "transparent"
         	//anchors.fill: parent
-			width: Screen.width
-		    height: Screen.height
+			width: 1024
+		    height: 800
 		Timer {
 			interval : animationInterval
 			repeat: true
