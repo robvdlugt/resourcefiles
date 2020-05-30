@@ -334,6 +334,8 @@
 <file alias="tsc/DimFogNight.png">./../../../tsc-images/DimFogNight.png</file>
 <file alias="tsc/shuffle.png">./../../../tsc-images/shuffle.png</file>
 <file alias="tsc/volume_down_small.png">./../../../tsc-images/volume_down_small.png</file>
+<file alias="tsc/BalloonIcon.png">./../../../tsc-images/BalloonIcon.png</file>
+<file alias="qb/tsc/AnimationScreen.qml">./qb/tsc/AnimationScreen.qml</file>
 <file alias="apps/tscSettings/TscSettingsApp.qml">./../../../tscSettings/TscSettingsApp.qml</file>
 <file alias="apps/tscSettings/TscFrame.qml">./../../../tscSettings/TscFrame.qml</file>
 <file alias="apps/tscSettings/HideToonLogoScreen.qml">./../../../tscSettings/HideToonLogoScreen.qml</file>
@@ -748,9 +750,6 @@
 <file alias="qb/base/WidgetContainer.qml">./qb/base/WidgetContainer.qml</file>
 <file alias="qb/components/AdvicePopup.qml">./qb/components/AdvicePopup.qml</file>
 <file alias="qb/components/AreaGraph.qml">./qb/components/AreaGraph.qml</file>
-<file alias="qb/components/Balloon.qml">./qb/components/Balloon.qml</file>
-<file alias="qb/components/Balloon4SpriteSheet.png">./qb/components/Balloon4SpriteSheet.png</file>
-<file alias="qb/components/BalloonIcon.png">./qb/components/BalloonIcon.png</file>
 <file alias="qb/components/BarButton.qml">./qb/components/BarButton.qml</file>
 <file alias="qb/components/BasePopup.qml">./qb/components/BasePopup.qml</file>
 <file alias="qb/components/BottomTabBar.qml">./qb/components/BottomTabBar.qml</file>
@@ -799,11 +798,7 @@
 <file alias="qb/components/qmldir">./qb/components/qmldir</file>
 <file alias="qb/components/RadioButtonList.qml">./qb/components/RadioButtonList.qml</file>
 <file alias="qb/components/RichTextButton.qml">./qb/components/RichTextButton.qml</file>
-<file alias="qb/components/RoachSprites.png">./qb/components/RoachSprites.png</file>
-<file alias="qb/components/Roach.qml">./qb/components/Roach.qml</file>
 <file alias="qb/components/RoundedRectangle.qml">./qb/components/RoundedRectangle.qml</file>
-<file alias="qb/components/Santa.qml">./qb/components/Santa.qml</file>
-<file alias="qb/components/SantaSprites2.png">./qb/components/SantaSprites2.png</file>
 <file alias="qb/components/Screen.qml">./qb/components/Screen.qml</file>
 <file alias="qb/components/ScrollableListItem.js">./qb/components/ScrollableListItem.js</file>
 <file alias="qb/components/ScrollableSimpleList.qml">./qb/components/ScrollableSimpleList.qml</file>

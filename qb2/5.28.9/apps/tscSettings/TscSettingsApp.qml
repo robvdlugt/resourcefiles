@@ -22,7 +22,7 @@ App {
 	property url customToonLogoScreenUrl: "CustomToonLogoScreen.qml"
         property url settingsScreenUrl: "qrc:/apps/settings/SettingsScreen.qml"
 
-	property string tscVersion: "2.1.1"
+	property string tscVersion: "2.1.2"
 
 	property real nxtScale: isNxt ? 1.5 : 1 
 	property bool rebootNeeded: false
@@ -70,6 +70,7 @@ App {
                 property string userMsgUuid
                 property string configMsgUuid
 		property string thermostatUuid
+		property string vocDevUuid
 	}
 
 
@@ -331,6 +332,55 @@ App {
 		var restartToonMessage = bxtFactory.newBxtMessage(BxtMessage.ACTION_INVOKE, p.configMsgUuid, "specific1", "RequestReboot");
 		bxtClient.sendMsg(restartToonMessage);
 	}
+
+        BxtDiscoveryHandler {
+                id: hdrvSensoryDiscoHandler
+                deviceType: "hdrv_sensory"
+                onDiscoReceived: {
+                        if (isHello) {
+                                if (devNode) {
+                                        for (var device = devNode.getChild("device"); device; device = device.next) {
+                                                var deviceType = device.getAttribute("type");
+                                                if (deviceType === undefined)
+                                                        continue;
+
+                                                var deviceUuid;
+                                                if (~deviceType.indexOf("vocSensor"))
+                                                {
+                                                        deviceUuid = device.getAttribute("uuid");
+                                                        if (deviceUuid)
+                                                                p.vocDevUuid = deviceUuid;
+                                                }
+                                        }
+                                }
+                        }
+                }
+        }
+
+
+        BxtNotifyHandler {
+                id: vocInfoNotifyHandler
+                sourceUuid: p.vocDevUuid
+                serviceId: "vocSensor"
+                initialPoll: true
+                variables: ["eco2", "tvoc"]
+                onNotificationReceived : {
+                        var value;
+                        var saveFile = new XMLHttpRequest()
+                        if ((value = message.getArgument("eco2")))
+                        {
+                                saveFile.open("PUT", "file:///tmp/eco2");
+                                saveFile.send(value);
+                        }
+                        else if ((value = message.getArgument("tvoc")))
+                        {
+                                saveFile.open("PUT", "file:///tmp/tvoc");
+                                saveFile.send(value);
+                        }
+
+                }
+        }
+
 
 
         BxtDiscoveryHandler {
