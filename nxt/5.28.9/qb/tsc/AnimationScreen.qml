@@ -68,6 +68,7 @@ Widget {
 				}	
 			}
 		}
-		visible: ((isVisibleinDimState || !dimState) && animationRunning)
+		//visible: ((isVisibleinDimState || !dimState) && animationRunning)
+		visible: (isVisibleinDimState || !dimState)
     	}
 }
