@@ -1,9 +1,6 @@
 import QtQuick 2.1
 import QtQuick.Window 2.0
-
-import QtQuick 2.1
-import QtQuick.Window 2.0
-///// TSC mod start
+// TSC mod start
 import "qrc:/qb/tsc" 
 import FileIO 1.0
 // TSC mod end
@@ -66,7 +63,6 @@ Window {
 	property bool firstLoadingDone: false
 	property bool isNormalMode: true
 	property bool isWizardMode: !isNormalMode
-
 
 	property int appsToLoad
 	onAppsToLoadChanged: p.setPsplashProgress()
@@ -348,7 +344,6 @@ Window {
 		}
 	}
 
-
 	function loadApps() {
 		if (!firstLoadingDone)
 			utilsApp.init();
@@ -600,7 +595,6 @@ Window {
 		anchors.fill: parent
 	}
 
-
 	Loader {
 		id: backendlessStartupLoader
 		anchors.fill: parent
@@ -627,8 +621,6 @@ Window {
 			}
 		}
 	}
-
-
 
 	BxtResponseHandler {
 		id: packageConfigResponseHandler
@@ -877,6 +869,7 @@ Window {
 
 	Timer {
 		id: loadTimer
+
 		interval: isNxt ? 90000 : 180000
 		onTriggered: {
 			console.debug("timeout for loading apps!");
