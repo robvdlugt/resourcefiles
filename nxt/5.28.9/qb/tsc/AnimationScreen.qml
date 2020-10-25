@@ -7,12 +7,27 @@ import qb.base 1.0
  */
 Widget {
 
-    property bool animationRunning: false
+        property bool animationRunning: false
 	property bool isVisibleinDimState: true
 	property int animationInterval : 1000
 	property string qmlAnimationURL
 	property string qmlAnimationText : "Animation Mode"
+	property string staticImageT1
+        property string staticImageT2
 	
+	
+	Rectangle {
+            id: staticoverlay
+            color: "transparent"
+            width: isNxt? 1024 : 800
+            height: isNxt? 600 : 480
+            Image {
+                    id: webimage
+                    source: isNxt? staticImageT2:staticImageT1
+                    width: parent.width
+                    height: parent.height
+            }
+     	}
 
 	Rectangle {
 		id: someText
@@ -40,7 +55,7 @@ Widget {
 	Rectangle {
         	id: balloonScreen
         	color: "transparent"
-        width: isNxt? 1024 : 800
+        	width: isNxt? 1024 : 800
 		height: isNxt? 600 : 480
 		Timer {
 			interval : animationInterval
