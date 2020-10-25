@@ -27,6 +27,7 @@ Widget {
                     width: parent.width
                     height: parent.height
             }
+	    visible:  ((isVisibleinDimState || !dimState) && animationRunning)
      	}
 
 	Rectangle {
