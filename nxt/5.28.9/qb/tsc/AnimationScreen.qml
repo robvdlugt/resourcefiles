@@ -13,25 +13,11 @@ Widget {
 	property string qmlAnimationURL
 	property string qmlAnimationText : "Animation Mode"
 	property string staticImageT1
-        property string staticImageT2
-	property bool animationSendSignal1: false
-	property bool animationSendSignal2: false
-	property bool animationSendSignal3: false
+    property string staticImageT2
 	
-	signal animationSignal1()
-	signal animationSignal2()
-	signal animationSignal3()
-	
-	
-	Component.onCompleted: {
-		if (animationSendSignal1) {animationSignal1(); animationSendSignal1 = false} 
-		if (animationSendSignal2) {animationSignal2(); animationSendSignal2 = false} 
-		if (animationSendSignal3) {animationSignal3(); animationSendSignal3 = false} 
-	}
-
 
 	Rectangle {
-            id: staticoverlay
+            id: staticOverlay
             color: "transparent"
             width: isNxt? 1024 : 800
             height: isNxt? 600 : 480
@@ -68,9 +54,9 @@ Widget {
 
 
 	Rectangle {
-        	id: balloonScreen
-        	color: "transparent"
-        	width: isNxt? 1024 : 800
+		id: animationCanvas
+		color: "transparent"
+		width: isNxt? 1024 : 800
 		height: isNxt? 600 : 480
 		Timer {
 			interval : animationInterval
@@ -87,8 +73,8 @@ Widget {
 				}
 				function finishCreation() {
     					if (component.status == Component.Ready) {
-        					var balloon = component.createObject(balloonScreen);
-        					if (balloon == null) {
+        					var spriteObject = component.createObject(animationCanvas);
+        					if (spriteObject == null) {
         					}
     					} else{
         					if (component.status === Component.Error) {
@@ -98,7 +84,6 @@ Widget {
 				}	
 			}
 		}
-		//visible: ((isVisibleinDimState || !dimState) && animationRunning)
 		visible: (isVisibleinDimState || !dimState)
     	}
 }
