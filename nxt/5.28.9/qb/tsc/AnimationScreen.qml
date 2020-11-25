@@ -14,8 +14,22 @@ Widget {
 	property string qmlAnimationText : "Animation Mode"
 	property string staticImageT1
         property string staticImageT2
+	property bool animationSendSignal1: false
+	property bool animationSendSignal2: false
+	property bool animationSendSignal3: false
+	
+	signal animationSignal1()
+	signal animationSignal2()
+	signal animationSignal3()
 	
 	
+	Component.onCompleted: {
+		if (animationSendSignal1) {animationSignal1(); animationSendSignal1 = false} 
+		if (animationSendSignal2) {animationSignal2(); animationSendSignal2 = false} 
+		if (animationSendSignal3) {animationSignal3(); animationSendSignal3 = false} 
+	}
+
+
 	Rectangle {
             id: staticoverlay
             color: "transparent"
