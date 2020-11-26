@@ -7,13 +7,15 @@ import qb.base 1.0
  */
 Widget {
 
-        property bool animationRunning: false
+    property bool animationRunning: false
 	property bool isVisibleinDimState: true
 	property int animationInterval : 1000
 	property string qmlAnimationURL
 	property string qmlAnimationText : "Animation Mode"
 	property string staticImageT1
     property string staticImageT2
+	
+	signal animationsSignal(string appName, string 	animationSignalString)
 	
 
 	Rectangle {
