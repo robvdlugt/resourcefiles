@@ -27,7 +27,7 @@ Widget {
             height: isNxt? 600 : 480
             Image {
                     id: webimage
-                    source: isNxt?   (dimState & (staticImageT2dim.length>4))? staticImageT2dim : staticImageT2 : (dimState & (staticImageT1dim.length>4))?staticImageT1
+                    source: isNxt?   (dimState & (staticImageT2dim.length>4))? staticImageT2dim : staticImageT2 : (dimState & (staticImageT1dim.length>4))? staticImageT1dim : staticImageT1
                     width: parent.width
                     height: parent.height
             }
