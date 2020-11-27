@@ -13,7 +13,9 @@ Widget {
 	property string qmlAnimationURL
 	property string qmlAnimationText : "Animation Mode"
 	property string staticImageT1
-    property string staticImageT2
+   	property string staticImageT2
+    	property string staticImageT1dim : ""
+    	property string staticImageT2dim : ""
 	
 	signal animationsSignal(string appName, string 	animationSignalString)
 	
@@ -25,7 +27,7 @@ Widget {
             height: isNxt? 600 : 480
             Image {
                     id: webimage
-                    source: isNxt? staticImageT2:staticImageT1
+                    source: isNxt?   (dimState & (staticImageT2dim.length>4))? staticImageT2dim : staticImageT2 : (dimState & (staticImageT1dim.length>4))?staticImageT1
                     width: parent.width
                     height: parent.height
             }
