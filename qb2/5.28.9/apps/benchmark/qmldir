@@ -1,6 +1,0 @@
-module apps.benchmark
-
-BenchmarkApp 1.0 BenchmarkApp.qml
-BenchmarkFriendsScreen 1.0 BenchmarkFriendsScreen.qml
-BenchmarkBar 1.0 BenchmarkBar.qml
-BenchmarkSmallBalloon 1.0 BenchmarkSmallBalloon.qml

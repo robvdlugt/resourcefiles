@@ -1,3 +1,0 @@
-module apps.clock
-ClockApp 1.0 ClockApp.qml
-ClockTile 1.0 ClockTile.qml

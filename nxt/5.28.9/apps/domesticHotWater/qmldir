@@ -1,4 +1,0 @@
-module apps.domesticHotWater
-DomesticHotWaterApp 1.0 DomesticHotWaterApp.qml
-DHWSidePanel 1.0 DHWSidePanel.qml
-DHWEditBlockScreen 1.0 DHWEditBlockScreen.qml

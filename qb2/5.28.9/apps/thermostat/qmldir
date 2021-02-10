@@ -1,4 +1,0 @@
-module apps.thermostat
-ThermostatApp 1.0 ThermostatApp.qml
-ThermostatSidePanel 1.0 ThermostatSidePanel.qml
-ThermostatSidePanelButton 1.0 ThermostatSidePanelButton.qml

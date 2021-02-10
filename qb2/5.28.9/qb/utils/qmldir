@@ -1,5 +1,0 @@
-module qb.utils
-UtilsApp 1.0 UtilsApp.qml
-DependencyResolver 1.0 DependencyResolver.qml
-ZWaveUtils 1.0 ZWaveUtils.qml
-ZWaveSecurityInfoButton 1.0 ZWaveSecurityInfoButton.qml

@@ -1,5 +1,0 @@
-module apps.statusUsage
-StatusUsageApp 1.0 StatusUsageApp.qml
-StatusUsageScreen 1.0 StatusUsageScreen.qml
-StatusUsageSystray 1.0 StatusUsageSystray.qml
-StatusUsageTile 1.0 StatusUsageTile.qml

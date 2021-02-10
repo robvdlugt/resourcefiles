@@ -1,5 +1,0 @@
-module qb.notifications
-
-Notifications 1.0 Notifications.qml
-NotificationBar 1.0 NotificationBar.qml
-NotificationElement 1.0 NotificationElement.qml

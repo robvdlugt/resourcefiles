@@ -1,8 +1,0 @@
-module apps.homescreen
-Homescreen 1.0 Homescreen.qml
-HomescreenApp 1.0 HomescreenApp.qml
-MenuScreen 1.0 MenuScreen.qml
-AddTileMenuItem 1.0 AddTileMenuItem.qml
-EmptyTile 1.0 EmptyTile.qml
-ThumbnailCategory 1.0 ThumbnailCategory.qml
-ChooseTileScreen 1.0 ChooseTileScreen.qml

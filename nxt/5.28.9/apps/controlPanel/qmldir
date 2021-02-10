@@ -1,3 +1,0 @@
-module apps.controlPanel
-ControlPanelApp 1.0 ControlPanelApp.qml
-ControlPanelScreen 1.0 ControlPanelScreen.qml

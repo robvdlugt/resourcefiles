@@ -1,5 +1,0 @@
-module qb.base
-QbTestCase 1.0 QbTestCase.qml
-QbCanvas 1.0 ../../Canvas.qml
-Home 1.0 ../../Home.qml
-
